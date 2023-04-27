@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\User36\\RiderProjects\\UlearnTestGame\\FortuneTeller\\FortuneTeller.csproj": {}
+    "C:\\Users\\User36\\RiderProjects\\Game\\UlearnTestGame\\FortuneTeller\\FortuneTeller.csproj": {}
   },
   "projects": {
-    "C:\\Users\\User36\\RiderProjects\\UlearnTestGame\\FortuneTeller\\FortuneTeller.csproj": {
+    "C:\\Users\\User36\\RiderProjects\\Game\\UlearnTestGame\\FortuneTeller\\FortuneTeller.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\User36\\RiderProjects\\UlearnTestGame\\FortuneTeller\\FortuneTeller.csproj",
+        "projectUniqueName": "C:\\Users\\User36\\RiderProjects\\Game\\UlearnTestGame\\FortuneTeller\\FortuneTeller.csproj",
         "projectName": "FortuneTeller",
-        "projectPath": "C:\\Users\\User36\\RiderProjects\\UlearnTestGame\\FortuneTeller\\FortuneTeller.csproj",
+        "projectPath": "C:\\Users\\User36\\RiderProjects\\Game\\UlearnTestGame\\FortuneTeller\\FortuneTeller.csproj",
         "packagesPath": "C:\\Users\\User36\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\User36\\RiderProjects\\UlearnTestGame\\FortuneTeller\\obj\\",
+        "outputPath": "C:\\Users\\User36\\RiderProjects\\Game\\UlearnTestGame\\FortuneTeller\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\User36\\AppData\\Roaming\\NuGet\\NuGet.Config",

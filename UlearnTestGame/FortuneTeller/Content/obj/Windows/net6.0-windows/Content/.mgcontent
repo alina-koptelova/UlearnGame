@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<SourceFileCollection xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Profile>Reach</Profile>
+  <Platform>Windows</Platform>
+  <Config />
+  <SourceFiles>
+    <File>C:/Users/User36/RiderProjects/Game/UlearnTestGame/FortuneTeller/Content/../../../../../Desktop/Гадалка upd/Комната/1920x1080/png/room.png</File>
+    <File>C:/Users/User36/RiderProjects/Game/UlearnTestGame/FortuneTeller/Content/book.png</File>
+    <File>C:/Users/User36/RiderProjects/Game/UlearnTestGame/FortuneTeller/Content/cards.png</File>
+    <File>C:/Users/User36/RiderProjects/Game/UlearnTestGame/FortuneTeller/Content/door.png</File>
+  </SourceFiles>
+  <DestFiles>
+    <File>room.png</File>
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+  </DestFiles>
+</SourceFileCollection>

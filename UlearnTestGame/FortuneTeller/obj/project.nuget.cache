@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "Gi3z9wEO4eRIhBrxzdzwTYcVK/wfHgypsTsgRLcnrJY5nSr4bT8iuND4odIWBsCt6P4KZHOAhsThSkwugiFj/Q==",
+  "dgSpecHash": "Ka70f+tJaPLm3cZrH4qYw5G++14x2yEU+LwtLI4xOokBNbufX++iGonSnjlrJ60BFYUMCg6VPhPNRM7VYn7A4w==",
   "success": true,
-  "projectFilePath": "C:\\Users\\User36\\RiderProjects\\UlearnTestGame\\FortuneTeller\\FortuneTeller.csproj",
+  "projectFilePath": "C:\\Users\\User36\\RiderProjects\\Game\\UlearnTestGame\\FortuneTeller\\FortuneTeller.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\User36\\.nuget\\packages\\libuv\\1.9.1\\libuv.1.9.1.nupkg.sha512",
     "C:\\Users\\User36\\.nuget\\packages\\microsoft.codeanalysis.analyzers\\1.1.0\\microsoft.codeanalysis.analyzers.1.1.0.nupkg.sha512",

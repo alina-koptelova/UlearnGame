@@ -1,0 +1,5 @@
+Source File,Dest File,Processor Type,Content Type,Source File Size,Dest File Size,Build Seconds
+"C:/Users/User36/RiderProjects/Game/UlearnTestGame/FortuneTeller/Content/../../../../../Desktop/Гадалка upd/Комната/1920x1080/png/room.png","C:/Users/User36/RiderProjects/Game/UlearnTestGame/FortuneTeller/Content/bin/Windows/room.xnb","TextureProcessor","Texture2DContent",17336,8294485,0,6389956
+"C:/Users/User36/RiderProjects/Game/UlearnTestGame/FortuneTeller/Content/book.png","C:/Users/User36/RiderProjects/Game/UlearnTestGame/FortuneTeller/Content/bin/Windows/book.xnb","TextureProcessor","Texture2DContent",14219,8294485,0,6527406
+"C:/Users/User36/RiderProjects/Game/UlearnTestGame/FortuneTeller/Content/cards.png","C:/Users/User36/RiderProjects/Game/UlearnTestGame/FortuneTeller/Content/bin/Windows/cards.xnb","TextureProcessor","Texture2DContent",14142,8294485,0,6503002
+"C:/Users/User36/RiderProjects/Game/UlearnTestGame/FortuneTeller/Content/door.png","C:/Users/User36/RiderProjects/Game/UlearnTestGame/FortuneTeller/Content/bin/Windows/door.xnb","TextureProcessor","Texture2DContent",14332,8294485,0,3204177
