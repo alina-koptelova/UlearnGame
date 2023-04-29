@@ -39,3 +39,13 @@ C:\Users\User36\RiderProjects\Game\UlearnTestGame\FortuneTeller\bin\Debug\net6.0
 C:\Users\User36\RiderProjects\Game\UlearnTestGame\FortuneTeller\bin\Debug\net6.0-windows\Content\book.xnb
 C:\Users\User36\RiderProjects\Game\UlearnTestGame\FortuneTeller\bin\Debug\net6.0-windows\Content\cards.xnb
 C:\Users\User36\RiderProjects\Game\UlearnTestGame\FortuneTeller\bin\Debug\net6.0-windows\Content\door.xnb
+C:\Users\User36\RiderProjects\Game\UlearnTestGame\FortuneTeller\bin\Debug\net6.0-windows\Content\owl.xnb
+C:\Users\User36\RiderProjects\Game\UlearnTestGame\FortuneTeller\bin\Debug\net6.0-windows\Content\door2.xnb
+C:\Users\User36\RiderProjects\Game\UlearnTestGame\FortuneTeller\bin\Debug\net6.0-windows\Content\cup.xnb
+C:\Users\User36\RiderProjects\Game\UlearnTestGame\FortuneTeller\bin\Debug\net6.0-windows\Content\File.xnb
+C:\Users\User36\RiderProjects\Game\UlearnTestGame\FortuneTeller\bin\Debug\net6.0-windows\Content\openbook.xnb
+C:\Users\User36\RiderProjects\Game\UlearnTestGame\FortuneTeller\bin\Debug\net6.0-windows\Content\melody.wma
+C:\Users\User36\RiderProjects\Game\UlearnTestGame\FortuneTeller\bin\Debug\net6.0-windows\Content\melody.xnb
+C:\Users\User36\RiderProjects\Game\UlearnTestGame\FortuneTeller\bin\Debug\net6.0-windows\Content\melody2.wma
+C:\Users\User36\RiderProjects\Game\UlearnTestGame\FortuneTeller\bin\Debug\net6.0-windows\Content\melody2.xnb
+C:\Users\User36\RiderProjects\Game\UlearnTestGame\FortuneTeller\bin\Debug\net6.0-windows\Content\dialogbox.xnb

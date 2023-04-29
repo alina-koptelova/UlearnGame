@@ -1,6 +1,11 @@
-﻿using Microsoft.Xna.Framework;
+﻿using System;
+using System.Drawing;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using Microsoft.Xna.Framework.Media;
+using Color = Microsoft.Xna.Framework.Color;
+using Rectangle = Microsoft.Xna.Framework.Rectangle;
 
 namespace FortuneTeller;
 
@@ -9,11 +14,19 @@ public class Game1 : Game
     private GraphicsDeviceManager _graphics;
     private SpriteBatch _spriteBatch;
     private Texture2D background;
-    private Texture2D door;
+    private Texture2D doorTexture;
+    private Texture2D clientTexture;
     private Texture2D cardsDeck;
     private Texture2D book;
+    private Texture2D cup;
     private float scale;
-
+    private SpriteFont font;
+    private int rating = 15;
+    Rectangle clientRect;
+    private Song song;
+    
+   private DialogBox dialogBox;
+   private SpriteFont dialogFont;
     public Game1()
     {
         _graphics = new GraphicsDeviceManager(this);
@@ -38,11 +51,26 @@ public class Game1 : Game
     {
         _spriteBatch = new SpriteBatch(GraphicsDevice);
         background = Content.Load<Texture2D>("room");
-        door = Content.Load<Texture2D>("door");
+        doorTexture = Content.Load<Texture2D>("door2");
         cardsDeck = Content.Load<Texture2D>("cards");
         book = Content.Load<Texture2D>("book");
-
-        // TODO: use this.Content to load your game content here
+        cup = Content.Load<Texture2D>("cup");
+        font = Content.Load<SpriteFont>("File");
+        clientTexture = Content.Load<Texture2D>("owl");
+        song = Content.Load<Song>("melody");
+        MediaPlayer.Play(song);
+        MediaPlayer.Volume = 0.1f;
+        MediaPlayer.IsRepeating = true;
+        MediaPlayer.MediaStateChanged += MediaPlayer_MediaStateChanged;
+        dialogFont = Content.Load<SpriteFont>("dialogbox");
+        dialogBox = new DialogBox(dialogFont,
+            "You are fortune teller. Accept clients by clicking on the door. " +
+            "Then guess them from a deck of taro cards using a book with hints", GraphicsDevice);
+    }
+    
+    void MediaPlayer_MediaStateChanged(object sender, EventArgs e)
+    {
+        MediaPlayer.Volume -= 0.1f;
     }
 
     protected override void Update(GameTime gameTime)
@@ -50,8 +78,17 @@ public class Game1 : Game
         if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed ||
             Keyboard.GetState().IsKeyDown(Keys.Escape))
             Exit();
-
-        // TODO: Add your update logic here
+        
+        dialogBox.Update();
+        
+        var doorRect = new Rectangle((int)(_graphics.PreferredBackBufferWidth * 0.896), 
+            (int)(_graphics.PreferredBackBufferHeight * 0.205), doorTexture.Width, doorTexture.Height);
+        
+        if (Mouse.GetState().LeftButton == ButtonState.Pressed && doorRect.Contains(Mouse.GetState().Position))
+        {
+            clientRect = background.Bounds;
+            rating -= 1;
+        }
 
         base.Update(gameTime);
     }
@@ -62,16 +99,22 @@ public class Game1 : Game
         _spriteBatch.Begin();
         _spriteBatch.Draw(background, Vector2.Zero, null, Color.White,
             0f, Vector2.Zero, scale, SpriteEffects.None, 0f);
-        _spriteBatch.Draw(door, Vector2.Zero, null, Color.White,
+        _spriteBatch.Draw(doorTexture, new Vector2((int)(_graphics.PreferredBackBufferWidth * 0.896), (int)(_graphics.PreferredBackBufferHeight * 0.205)), null, Color.White,
+            0f, Vector2.Zero, scale, SpriteEffects.None, 0f);
+        _spriteBatch.Draw(clientTexture, Vector2.Zero, clientRect, Color.White,
             0f, Vector2.Zero, scale, SpriteEffects.None, 0f);
         _spriteBatch.Draw(book, Vector2.Zero, null, Color.White,
             0f, Vector2.Zero, scale, SpriteEffects.None, 0f);
         _spriteBatch.Draw(cardsDeck, Vector2.Zero, null, Color.White,
             0f, Vector2.Zero, scale, SpriteEffects.None, 0f);
+        _spriteBatch.Draw(cup, new Vector2(15, 10), null, Color.White,
+            0f, Vector2.Zero, scale, SpriteEffects.None, 0f);
+        _spriteBatch.DrawString(font, rating.ToString(), new Vector2(90, 30), Color.Black);
+        
+        dialogBox.Draw(_spriteBatch, GraphicsDevice);
+        
         _spriteBatch.End();
-
-        // TODO: Add your drawing code here
-
+        
         base.Draw(gameTime);
     }
 }
