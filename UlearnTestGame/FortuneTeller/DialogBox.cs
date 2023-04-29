@@ -5,6 +5,8 @@ using Microsoft.Xna.Framework.Input;
 using Color = Microsoft.Xna.Framework.Color;
 using Rectangle = Microsoft.Xna.Framework.Rectangle;
 using Vector2 = Microsoft.Xna.Framework.Vector2;
+using System;
+using System.Text;
 
 namespace FortuneTeller;
 
@@ -69,68 +71,29 @@ public class DialogBox
     {
         var lines = new List<string>();
         var words = text.Split(' ');
-        var currentLine = "";
+        var currentLine = new StringBuilder();
 
         foreach (var word in words)
         {
-            if (word == "\n")
+            if (word == "n")
             {
-                lines.Add(currentLine.TrimEnd());
-                currentLine = "";
+                lines.Add(currentLine.ToString().TrimEnd());
+                currentLine.Clear();
+            }
+            else if (font.MeasureString(currentLine + word).X > maxLineWidth)
+            {
+                lines.Add(currentLine.ToString().TrimEnd());
+                currentLine.Clear().Append(word).Append(' ');
             }
             else
             {
-                var lineWithWord = currentLine + word + " ";
-                
-                if (font.MeasureString(lineWithWord).X <= maxLineWidth)
-                {
-                    currentLine = lineWithWord;
-                }
-                else if (font.MeasureString(word).X <= maxLineWidth)
-                {
-                    lines.Add(currentLine.TrimEnd());
-                    currentLine = word + " ";
-                }
-                else
-                {
-                    var startIndex = 0;
-                    
-                    while (startIndex < word.Length)
-                    {
-                        var count = 1;
-                        var line = "";
-                        
-                        while (font.MeasureString(line + word.Substring(startIndex, count)).X <= maxLineWidth)
-                        {
-                            count++;
-                            if (startIndex + count > word.Length)
-                                break;
-                        }
-
-                        if (count == 1)
-                        {
-                            currentLine += word.Substring(startIndex, count) + " ";
-                            startIndex += count;
-                        }
-                        else
-                        {
-                            lines.Add(line.TrimEnd());
-                            line = "";
-                            for (var i = startIndex; i < startIndex + count; i++)
-                            {
-                                line += word[i];
-                            }
-                            currentLine = line.TrimEnd() + " ";
-                            startIndex += count;
-                        }
-                    }
-                }
+                currentLine.Append(word).Append(' ');
             }
         }
 
-        if (!string.IsNullOrWhiteSpace(currentLine))
+        if (currentLine.Length > 0)
         {
-            lines.Add(currentLine.TrimEnd());
+            lines.Add(currentLine.ToString().TrimEnd());
         }
 
         return lines;
