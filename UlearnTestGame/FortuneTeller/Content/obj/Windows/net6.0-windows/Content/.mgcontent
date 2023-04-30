@@ -11,13 +11,19 @@
     <File>C:/Users/User36/RiderProjects/Game/UlearnTestGame/FortuneTeller/Content/dialogbox.spritefont</File>
     <File>C:/Users/User36/RiderProjects/Game/UlearnTestGame/FortuneTeller/Content/door.png</File>
     <File>C:/Users/User36/RiderProjects/Game/UlearnTestGame/FortuneTeller/Content/door2.png</File>
+    <File>C:/Users/User36/RiderProjects/Game/UlearnTestGame/FortuneTeller/Content/exit.png</File>
     <File>C:/Users/User36/RiderProjects/Game/UlearnTestGame/FortuneTeller/Content/File.spritefont</File>
     <File>C:/Users/User36/RiderProjects/Game/UlearnTestGame/FortuneTeller/Content/melody.mp3</File>
+    <File>C:/Users/User36/RiderProjects/Game/UlearnTestGame/FortuneTeller/Content/menuback.png</File>
     <File>C:/Users/User36/RiderProjects/Game/UlearnTestGame/FortuneTeller/Content/openbook.png</File>
     <File>C:/Users/User36/RiderProjects/Game/UlearnTestGame/FortuneTeller/Content/owl.png</File>
+    <File>C:/Users/User36/RiderProjects/Game/UlearnTestGame/FortuneTeller/Content/start.png</File>
   </SourceFiles>
   <DestFiles>
     <File>room.png</File>
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />

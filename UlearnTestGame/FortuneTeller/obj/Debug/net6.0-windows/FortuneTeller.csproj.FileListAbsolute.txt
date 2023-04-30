@@ -49,3 +49,6 @@ C:\Users\User36\RiderProjects\Game\UlearnTestGame\FortuneTeller\bin\Debug\net6.0
 C:\Users\User36\RiderProjects\Game\UlearnTestGame\FortuneTeller\bin\Debug\net6.0-windows\Content\melody2.wma
 C:\Users\User36\RiderProjects\Game\UlearnTestGame\FortuneTeller\bin\Debug\net6.0-windows\Content\melody2.xnb
 C:\Users\User36\RiderProjects\Game\UlearnTestGame\FortuneTeller\bin\Debug\net6.0-windows\Content\dialogbox.xnb
+C:\Users\User36\RiderProjects\Game\UlearnTestGame\FortuneTeller\bin\Debug\net6.0-windows\Content\exit.xnb
+C:\Users\User36\RiderProjects\Game\UlearnTestGame\FortuneTeller\bin\Debug\net6.0-windows\Content\menuback.xnb
+C:\Users\User36\RiderProjects\Game\UlearnTestGame\FortuneTeller\bin\Debug\net6.0-windows\Content\start.xnb

@@ -24,6 +24,7 @@ public class Game1 : Game
     private int rating = 15;
     Rectangle clientRect;
     private Song song;
+    private Menu menu;
     
    private DialogBox dialogBox;
    private SpriteFont dialogFont;
@@ -64,8 +65,9 @@ public class Game1 : Game
         MediaPlayer.MediaStateChanged += MediaPlayer_MediaStateChanged;
         dialogFont = Content.Load<SpriteFont>("dialogbox");
         dialogBox = new DialogBox(dialogFont,
-            "You are fortune teller. Accept clients by clicking on the door. " +
-            "Then guess them from a deck of taro cards using a book with hints", GraphicsDevice);
+            "Ты - гадалка на таро. Принимай клиентов, нажимая на дверь. " +
+            "Затем гадай им по колоде карт на столе, используя книгу с подсказками", GraphicsDevice);
+        menu = new Menu(Content);
     }
     
     void MediaPlayer_MediaStateChanged(object sender, EventArgs e)
@@ -79,6 +81,7 @@ public class Game1 : Game
             Keyboard.GetState().IsKeyDown(Keys.Escape))
             Exit();
         
+        menu.Update(_graphics);
         dialogBox.Update();
         
         var doorRect = new Rectangle((int)(_graphics.PreferredBackBufferWidth * 0.896), 
@@ -97,22 +100,26 @@ public class Game1 : Game
     {
         GraphicsDevice.Clear(Color.CornflowerBlue);
         _spriteBatch.Begin();
-        _spriteBatch.Draw(background, Vector2.Zero, null, Color.White,
-            0f, Vector2.Zero, scale, SpriteEffects.None, 0f);
-        _spriteBatch.Draw(doorTexture, new Vector2((int)(_graphics.PreferredBackBufferWidth * 0.896), (int)(_graphics.PreferredBackBufferHeight * 0.205)), null, Color.White,
-            0f, Vector2.Zero, scale, SpriteEffects.None, 0f);
-        _spriteBatch.Draw(clientTexture, Vector2.Zero, clientRect, Color.White,
-            0f, Vector2.Zero, scale, SpriteEffects.None, 0f);
-        _spriteBatch.Draw(book, Vector2.Zero, null, Color.White,
-            0f, Vector2.Zero, scale, SpriteEffects.None, 0f);
-        _spriteBatch.Draw(cardsDeck, Vector2.Zero, null, Color.White,
-            0f, Vector2.Zero, scale, SpriteEffects.None, 0f);
-        _spriteBatch.Draw(cup, new Vector2(15, 10), null, Color.White,
-            0f, Vector2.Zero, scale, SpriteEffects.None, 0f);
-        _spriteBatch.DrawString(font, rating.ToString(), new Vector2(90, 30), Color.Black);
+        menu.Draw(_spriteBatch, _graphics, scale);
+        if (!menu.IsActive())
+        {
+            _spriteBatch.Draw(background, Vector2.Zero, null, Color.White,
+                0f, Vector2.Zero, scale, SpriteEffects.None, 0f);
+            _spriteBatch.Draw(doorTexture, new Vector2((int)(_graphics.PreferredBackBufferWidth * 0.896), (int)(_graphics.PreferredBackBufferHeight * 0.205)), null, Color.White,
+                0f, Vector2.Zero, scale, SpriteEffects.None, 0f);
+            _spriteBatch.Draw(clientTexture, Vector2.Zero, clientRect, Color.White,
+                0f, Vector2.Zero, scale, SpriteEffects.None, 0f);
+            _spriteBatch.Draw(book, Vector2.Zero, null, Color.White,
+                0f, Vector2.Zero, scale, SpriteEffects.None, 0f);
+            _spriteBatch.Draw(cardsDeck, Vector2.Zero, null, Color.White,
+                0f, Vector2.Zero, scale, SpriteEffects.None, 0f);
+            _spriteBatch.Draw(cup, new Vector2(15, 10), null, Color.White,
+                0f, Vector2.Zero, scale, SpriteEffects.None, 0f);
+            _spriteBatch.DrawString(font, rating.ToString(), new Vector2(90, 30), Color.Black);
         
-        dialogBox.Draw(_spriteBatch, GraphicsDevice);
-        
+            dialogBox.Draw(_spriteBatch, GraphicsDevice);
+        }
+
         _spriteBatch.End();
         
         base.Draw(gameTime);
