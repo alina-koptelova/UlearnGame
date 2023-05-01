@@ -25,20 +25,25 @@ public class Game1 : Game
     Rectangle clientRect;
     private Song song;
     private Menu menu;
+    private Texture2D cursor;
+    private Texture2D cursorHand;
     
    private DialogBox dialogBox;
    private SpriteFont dialogFont;
     public Game1()
     {
         _graphics = new GraphicsDeviceManager(this);
+        Window.Title = "Симулятор гадалки таро";
         Content.RootDirectory = "Content";
+        _graphics.IsFullScreen = true;
         IsMouseVisible = true;
     }
 
     protected override void Initialize()
     {
-        _graphics.PreferredBackBufferWidth = 1200;
-        _graphics.PreferredBackBufferHeight = 675;
+        _graphics.PreferredBackBufferWidth = 1280;
+        _graphics.PreferredBackBufferHeight = 720;
+        
         _graphics.ApplyChanges();
 
         // Вычисление масштабного коэффициента
@@ -51,6 +56,9 @@ public class Game1 : Game
     protected override void LoadContent()
     {
         _spriteBatch = new SpriteBatch(GraphicsDevice);
+        cursor = Content.Load<Texture2D>("cursor");
+        cursorHand = Content.Load<Texture2D>("cursorhand");
+        Mouse.SetCursor(MouseCursor.FromTexture2D(cursor, 0, 0));
         background = Content.Load<Texture2D>("room");
         doorTexture = Content.Load<Texture2D>("door2");
         cardsDeck = Content.Load<Texture2D>("cards");
@@ -80,12 +88,12 @@ public class Game1 : Game
         if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed ||
             Keyboard.GetState().IsKeyDown(Keys.Escape))
             Exit();
-        
+
         menu.Update(_graphics);
         dialogBox.Update();
         
         var doorRect = new Rectangle((int)(_graphics.PreferredBackBufferWidth * 0.896), 
-            (int)(_graphics.PreferredBackBufferHeight * 0.205), doorTexture.Width, doorTexture.Height);
+            (int)(_graphics.PreferredBackBufferHeight * 0.205), (int)(doorTexture.Width * 0.896), doorTexture.Height);
         
         if (Mouse.GetState().LeftButton == ButtonState.Pressed && doorRect.Contains(Mouse.GetState().Position))
         {
