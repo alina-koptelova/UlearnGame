@@ -27,9 +27,9 @@ public class Game1 : Game
     private Menu menu;
     private Texture2D cursor;
     private Texture2D cursorHand;
-    
-   private DialogBox dialogBox;
-   private SpriteFont dialogFont;
+    private Owl owl;
+    private DialogBox dialogBox;
+    private SpriteFont dialogFont;
     public Game1()
     {
         _graphics = new GraphicsDeviceManager(this);
@@ -60,12 +60,13 @@ public class Game1 : Game
         cursorHand = Content.Load<Texture2D>("cursorhand");
         Mouse.SetCursor(MouseCursor.FromTexture2D(cursor, 0, 0));
         background = Content.Load<Texture2D>("room");
+        owl = new Owl(Content);
         doorTexture = Content.Load<Texture2D>("door2");
         cardsDeck = Content.Load<Texture2D>("cards");
         book = Content.Load<Texture2D>("book");
         cup = Content.Load<Texture2D>("cup");
         font = Content.Load<SpriteFont>("File");
-        clientTexture = Content.Load<Texture2D>("owl");
+        clientTexture = Content.Load<Texture2D>("client1");
         song = Content.Load<Song>("melody");
         MediaPlayer.Play(song);
         MediaPlayer.Volume = 0.1f;
@@ -80,7 +81,7 @@ public class Game1 : Game
     
     void MediaPlayer_MediaStateChanged(object sender, EventArgs e)
     {
-        MediaPlayer.Volume -= 0.1f;
+        MediaPlayer.Volume -= 0f;
     }
 
     protected override void Update(GameTime gameTime)
@@ -88,7 +89,7 @@ public class Game1 : Game
         if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed ||
             Keyboard.GetState().IsKeyDown(Keys.Escape))
             Exit();
-
+        owl.Update(gameTime);
         menu.Update(_graphics);
         dialogBox.Update();
         
@@ -113,6 +114,7 @@ public class Game1 : Game
         {
             _spriteBatch.Draw(background, Vector2.Zero, null, Color.White,
                 0f, Vector2.Zero, scale, SpriteEffects.None, 0f);
+            owl.Draw(_spriteBatch, scale);
             _spriteBatch.Draw(doorTexture, new Vector2((int)(_graphics.PreferredBackBufferWidth * 0.896), (int)(_graphics.PreferredBackBufferHeight * 0.205)), null, Color.White,
                 0f, Vector2.Zero, scale, SpriteEffects.None, 0f);
             _spriteBatch.Draw(clientTexture, Vector2.Zero, clientRect, Color.White,

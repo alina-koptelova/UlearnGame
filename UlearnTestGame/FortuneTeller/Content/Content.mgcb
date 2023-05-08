@@ -49,6 +49,18 @@
 /processorParam:TextureFormat=Color
 /build:cards.png
 
+#begin client1.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:client1.png
+
 #begin cup.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -165,7 +177,7 @@
 /processorParam:TextureFormat=Color
 /build:openbook.png
 
-#begin owl.png
+#begin owlleft.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -175,7 +187,19 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:owl.png
+/build:owlleft.png
+
+#begin owlright.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:owlright.png
 
 #begin start.png
 /importer:TextureImporter
