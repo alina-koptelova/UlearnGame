@@ -21,13 +21,13 @@ public class Card
     private Rectangle cardsDeckRect;
     private bool isVisible;
     private float opacity;
-    private const float speed = 0.01f; 
-    
-    public Card(ContentManager content)
+    private const float speed = 0.01f;
+    private string cardName;
+    public Card(ContentManager content, Texture2D cardsDeck, string cardName)
     {
-        cardTexture = content.Load<Texture2D>("cardexample"); // потом поменять чтобы разное делать
+        cardTexture = content.Load<Texture2D>(cardName); // потом поменять чтобы разное делать
         animationSheet = content.Load<Texture2D>("cardsAnimation");
-        cardsDeck = content.Load<Texture2D>("cardsDeck");
+        this.cardsDeck = cardsDeck;
         frames = new Rectangle[14];
         
         for (var i = 0; i < 5; i++) 
@@ -93,9 +93,6 @@ public class Card
     {
         cardsDeckRect = new Rectangle((int)(graphics.PreferredBackBufferWidth * 0.3),
             (int)(graphics.PreferredBackBufferHeight * 0.798), cardsDeck.Width, cardsDeck.Height);
-        spriteBatch.Draw(cardsDeck, new Vector2((int)(graphics.PreferredBackBufferWidth * 0.448), 
-                (int)(graphics.PreferredBackBufferHeight * 0.798)), null, Color.White,
-            0f, Vector2.Zero, scale, SpriteEffects.None, 0f);
         cardRect = new Rectangle((int)position.X, (int)position.Y, 
             (int)(cardTexture.Width * scale), (int)(cardTexture.Height * scale));
         

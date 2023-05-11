@@ -62,7 +62,7 @@ public class Game1 : Game
         background = Content.Load<Texture2D>("room");
         owl = new Owl(Content);
         doorTexture = Content.Load<Texture2D>("door2");
-        cardsDeck = Content.Load<Texture2D>("cards");
+        cardsDeck = Content.Load<Texture2D>("cardsDeck");
         book = Content.Load<Texture2D>("book");
         cup = Content.Load<Texture2D>("cup");
         font = Content.Load<SpriteFont>("File");
@@ -119,9 +119,11 @@ public class Game1 : Game
                 0f, Vector2.Zero, scale, SpriteEffects.None, 0f);
             _spriteBatch.Draw(clientTexture, Vector2.Zero, clientRect, Color.White,
                 0f, Vector2.Zero, scale, SpriteEffects.None, 0f);
-            _spriteBatch.Draw(book, Vector2.Zero, null, Color.White,
+            _spriteBatch.Draw(book, new Vector2((int)(_graphics.PreferredBackBufferWidth * 0.625), 
+                    (int)(_graphics.PreferredBackBufferHeight * 0.741)), null, Color.White,
                 0f, Vector2.Zero, scale, SpriteEffects.None, 0f);
-            _spriteBatch.Draw(cardsDeck, Vector2.Zero, null, Color.White,
+            _spriteBatch.Draw(cardsDeck, new Vector2((int)(_graphics.PreferredBackBufferWidth * 0.448), 
+                    (int)(_graphics.PreferredBackBufferHeight * 0.798)), null, Color.White,
                 0f, Vector2.Zero, scale, SpriteEffects.None, 0f);
             _spriteBatch.Draw(cup, new Vector2(15, 10), null, Color.White,
                 0f, Vector2.Zero, scale, SpriteEffects.None, 0f);

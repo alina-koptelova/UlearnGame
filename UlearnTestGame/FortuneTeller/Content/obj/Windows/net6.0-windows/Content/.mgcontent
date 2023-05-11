@@ -4,10 +4,18 @@
   <Platform>Windows</Platform>
   <Config />
   <SourceFiles>
+    <File>C:/Users/User36/RiderProjects/Game/UlearnTestGame/FortuneTeller/Content/../../../../../Desktop/Гадалка upd/Комната/1920x1080/book.png</File>
     <File>C:/Users/User36/RiderProjects/Game/UlearnTestGame/FortuneTeller/Content/../../../../../Desktop/Гадалка upd/Комната/1920x1080/png/room.png</File>
-    <File>C:/Users/User36/RiderProjects/Game/UlearnTestGame/FortuneTeller/Content/book.png</File>
     <File>C:/Users/User36/RiderProjects/Game/UlearnTestGame/FortuneTeller/Content/cards.png</File>
+    <File>C:/Users/User36/RiderProjects/Game/UlearnTestGame/FortuneTeller/Content/cardsAnimation.png</File>
+    <File>C:/Users/User36/RiderProjects/Game/UlearnTestGame/FortuneTeller/Content/cardsDeck.png</File>
     <File>C:/Users/User36/RiderProjects/Game/UlearnTestGame/FortuneTeller/Content/client1.png</File>
+    <File>C:/Users/User36/RiderProjects/Game/UlearnTestGame/FortuneTeller/Content/client2.png</File>
+    <File>C:/Users/User36/RiderProjects/Game/UlearnTestGame/FortuneTeller/Content/client3.png</File>
+    <File>C:/Users/User36/RiderProjects/Game/UlearnTestGame/FortuneTeller/Content/client4.png</File>
+    <File>C:/Users/User36/RiderProjects/Game/UlearnTestGame/FortuneTeller/Content/client5.png</File>
+    <File>C:/Users/User36/RiderProjects/Game/UlearnTestGame/FortuneTeller/Content/client6.png</File>
+    <File>C:/Users/User36/RiderProjects/Game/UlearnTestGame/FortuneTeller/Content/client7.png</File>
     <File>C:/Users/User36/RiderProjects/Game/UlearnTestGame/FortuneTeller/Content/cup.png</File>
     <File>C:/Users/User36/RiderProjects/Game/UlearnTestGame/FortuneTeller/Content/cursor.png</File>
     <File>C:/Users/User36/RiderProjects/Game/UlearnTestGame/FortuneTeller/Content/cursorhand.png</File>
@@ -24,7 +32,15 @@
     <File>C:/Users/User36/RiderProjects/Game/UlearnTestGame/FortuneTeller/Content/start.png</File>
   </SourceFiles>
   <DestFiles>
+    <File>book.png</File>
     <File>room.png</File>
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />

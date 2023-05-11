@@ -56,3 +56,11 @@ C:\Users\User36\RiderProjects\Game\UlearnTestGame\FortuneTeller\bin\Debug\net6.0
 C:\Users\User36\RiderProjects\Game\UlearnTestGame\FortuneTeller\bin\Debug\net6.0-windows\Content\client1.xnb
 C:\Users\User36\RiderProjects\Game\UlearnTestGame\FortuneTeller\bin\Debug\net6.0-windows\Content\owlleft.xnb
 C:\Users\User36\RiderProjects\Game\UlearnTestGame\FortuneTeller\bin\Debug\net6.0-windows\Content\owlright.xnb
+C:\Users\User36\RiderProjects\Game\UlearnTestGame\FortuneTeller\bin\Debug\net6.0-windows\Content\cardsAnimation.xnb
+C:\Users\User36\RiderProjects\Game\UlearnTestGame\FortuneTeller\bin\Debug\net6.0-windows\Content\cardsDeck.xnb
+C:\Users\User36\RiderProjects\Game\UlearnTestGame\FortuneTeller\bin\Debug\net6.0-windows\Content\client2.xnb
+C:\Users\User36\RiderProjects\Game\UlearnTestGame\FortuneTeller\bin\Debug\net6.0-windows\Content\client3.xnb
+C:\Users\User36\RiderProjects\Game\UlearnTestGame\FortuneTeller\bin\Debug\net6.0-windows\Content\client4.xnb
+C:\Users\User36\RiderProjects\Game\UlearnTestGame\FortuneTeller\bin\Debug\net6.0-windows\Content\client5.xnb
+C:\Users\User36\RiderProjects\Game\UlearnTestGame\FortuneTeller\bin\Debug\net6.0-windows\Content\client6.xnb
+C:\Users\User36\RiderProjects\Game\UlearnTestGame\FortuneTeller\bin\Debug\net6.0-windows\Content\client7.xnb
