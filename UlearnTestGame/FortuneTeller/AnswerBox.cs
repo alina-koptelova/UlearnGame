@@ -6,7 +6,7 @@ using Microsoft.Xna.Framework.Input;
 
 namespace FortuneTeller;
 
-public class ChoiceBox
+public class AnswerBox
 {
     private string[] options;
     private int correctAnswerIndex;
@@ -15,7 +15,7 @@ public class ChoiceBox
     private bool isVisible;
     private Rectangle rect;
 
-    public ChoiceBox(SpriteFont font, string[] options, int correctAnswerIndex, GraphicsDevice graphicsDevice)
+    public AnswerBox(SpriteFont font, string[] options, int correctAnswerIndex, GraphicsDevice graphicsDevice)
     {
         this.font = font;
         this.options = options;
