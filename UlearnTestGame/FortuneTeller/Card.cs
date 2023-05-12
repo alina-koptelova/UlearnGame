@@ -22,13 +22,17 @@ public class Card
     private bool isVisible;
     private float opacity;
     private const float speed = 0.01f;
-    private string cardName;
-    public Card(ContentManager content, Texture2D cardsDeck, string cardName)
+    private Texture2D openBookButton;
+    private Book openedBook;
+    
+    public Card(ContentManager content, Texture2D cardsDeck, string cardTextureName)
     {
-        cardTexture = content.Load<Texture2D>(cardName); // потом поменять чтобы разное делать
+        cardTexture = content.Load<Texture2D>(cardTextureName); // потом поменять чтобы разное делать
         animationSheet = content.Load<Texture2D>("cardsAnimation");
         this.cardsDeck = cardsDeck;
         frames = new Rectangle[14];
+        openBookButton = content.Load<Texture2D>("openBookButton");
+        openedBook = new Book(content, openBookButton);
         
         for (var i = 0; i < 5; i++) 
         {
@@ -49,6 +53,8 @@ public class Card
 
     public void Update(GameTime gameTime)
     {
+        openedBook.Update();
+        
         if (Mouse.GetState().LeftButton == ButtonState.Pressed
             && cardsDeckRect.Contains(Mouse.GetState().Position))
         {
@@ -95,7 +101,9 @@ public class Card
             (int)(graphics.PreferredBackBufferHeight * 0.798), cardsDeck.Width, cardsDeck.Height);
         cardRect = new Rectangle((int)position.X, (int)position.Y, 
             (int)(cardTexture.Width * scale), (int)(cardTexture.Height * scale));
-        
+        var openBookButtonPosition = new Vector2((int)(graphics.PreferredBackBufferWidth * 0.722),
+            (int)(graphics.PreferredBackBufferHeight * 0.591));
+
         if (isVisible)
         {
             if (isFlipped)
@@ -107,11 +115,26 @@ public class Card
                 spriteBatch.Draw(animationSheet, cardRect, frames[currentFrameIndex], 
                     Color.White * opacity);
             }
+
+            spriteBatch.Draw(openBookButton, openBookButtonPosition, null, Color.White, 
+                0f, Vector2.Zero, scale, SpriteEffects.None, 0f);
+            openedBook.Draw(spriteBatch, graphics, scale, openBookButtonPosition);
         }
     }
 
     public bool IsFlipped()
     {
         return isFlipped;
+    }
+
+    public bool BookIsOpened()
+    {
+        if (!openedBook.IsVisible()) return false;
+        return true;
+    }
+
+    public void Hide()
+    {
+        isVisible = false;
     }
 }

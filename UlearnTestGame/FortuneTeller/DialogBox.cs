@@ -98,4 +98,9 @@ public class DialogBox
 
         return lines;
     }
+    
+    public bool IsVisible()
+    {
+        return isVisible;
+    }
 }

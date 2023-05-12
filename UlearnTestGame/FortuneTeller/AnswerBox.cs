@@ -14,9 +14,13 @@ public class AnswerBox
     private SpriteFont font;
     private bool isVisible;
     private Rectangle rect;
+    private bool isAnswerSelected;
+    private int rating;
 
-    public AnswerBox(SpriteFont font, string[] options, int correctAnswerIndex, GraphicsDevice graphicsDevice)
+    public AnswerBox(SpriteFont font, string[] options, int correctAnswerIndex, 
+        GraphicsDevice graphicsDevice, int rating)
     {
+        this.rating = rating;
         this.font = font;
         this.options = options;
         this.correctAnswerIndex = correctAnswerIndex;
@@ -33,16 +37,24 @@ public class AnswerBox
             float offsetX = rect.X + 20;
             
             for (var i = 0; i < options.Length; i++)
-            {
+            { 
                 if (Mouse.GetState().LeftButton == ButtonState.Pressed && new Rectangle((int)offsetX, (int)offsetY,
                         (int)font.MeasureString(options[i]).X, 
                         (int)font.MeasureString(options[i]).Y).Contains(Mouse.GetState().Position))
                 {
-                    isVisible = false;
                     selectedAnswerIndex = i;
+                    isVisible = false;
+                    isAnswerSelected = true;
+                    UpdateRating();
                 }
                 
                 offsetY += font.MeasureString(options[i]).Y + 10;
+                
+                if (i == 0)
+                {
+                    offsetY += 60;
+                    offsetX += 40;
+                }
             }
         }
     }
@@ -81,12 +93,7 @@ public class AnswerBox
             }
         }
     }
-    
-    public bool IsRightAnswer()
-    {
-        return selectedAnswerIndex == correctAnswerIndex;
-    }
-    
+
     private static Texture2D GenerateTexture(GraphicsDevice graphicsDevice, Rectangle rect, Color color)
     {
         var texture = new Texture2D(graphicsDevice, rect.Width, rect.Height);
@@ -130,5 +137,37 @@ public class AnswerBox
         }
 
         return lines;
+    }
+    
+    public bool IsRightAnswer()
+    {
+        return selectedAnswerIndex == correctAnswerIndex;
+    }
+
+    public bool IsAnswerSelected()
+    {
+        if (isAnswerSelected == false)
+            return false;
+        return true;
+    }
+    private void UpdateRating()
+    {
+        if (IsRightAnswer())
+        {
+            rating--;
+        }
+        else
+        {
+            rating++;
+        }
+    }
+    public int GetRating()
+    {
+        return rating;
+    }
+
+    public bool IsVisible()
+    {
+        return isVisible;
     }
 }
