@@ -14,7 +14,7 @@ public class AnswerBox
     private SpriteFont font;
     private bool isVisible;
     private Rectangle rect;
-    private bool isAnswerSelected;
+    private bool isAnswerSelected = false;
     private int rating;
 
     public AnswerBox(SpriteFont font, string[] options, int correctAnswerIndex, 
@@ -23,8 +23,8 @@ public class AnswerBox
         this.rating = rating;
         this.font = font;
         this.options = options;
-        this.correctAnswerIndex = correctAnswerIndex;
         isVisible = true;
+        this.correctAnswerIndex = correctAnswerIndex;
         rect = new Rectangle(0, graphicsDevice.Viewport.Height - graphicsDevice.Viewport.Height / 4,
             graphicsDevice.Viewport.Width, graphicsDevice.Viewport.Height / 4);
     }
@@ -43,11 +43,10 @@ public class AnswerBox
                         (int)font.MeasureString(options[i]).Y).Contains(Mouse.GetState().Position))
                 {
                     selectedAnswerIndex = i;
-                    isVisible = false;
                     isAnswerSelected = true;
+                    isVisible = false;
                     UpdateRating();
                 }
-                
                 offsetY += font.MeasureString(options[i]).Y + 10;
                 
                 if (i == 0)
@@ -56,6 +55,22 @@ public class AnswerBox
                     offsetX += 40;
                 }
             }
+            // if (isAnswerSelected)
+            // {
+            //     isVisible = false;
+            // }
+            // if (!isVisible)
+            // {
+            //     dialogBoxThanks.Update();
+            // }
+            // if (!dialogBoxThanks.IsVisible())
+            //      UpdateRating();
+            // if (!isVisible)
+            // {
+            //     dialogBoxThanks.Update();
+            // }
+            // if (!dialogBoxThanks.IsVisible())
+            //     UpdateRating();
         }
     }
 
@@ -92,6 +107,8 @@ public class AnswerBox
                 offsetY += 30;
             }
         }
+        // if (isVisible == false) 
+        //     dialogBoxThanks.Draw(spriteBatch, graphicsDevice);
     }
 
     private static Texture2D GenerateTexture(GraphicsDevice graphicsDevice, Rectangle rect, Color color)
@@ -146,11 +163,9 @@ public class AnswerBox
 
     public bool IsAnswerSelected()
     {
-        if (isAnswerSelected == false)
-            return false;
-        return true;
+        return isAnswerSelected;
     }
-    private void UpdateRating()
+    public void UpdateRating()
     {
         if (IsRightAnswer())
         {

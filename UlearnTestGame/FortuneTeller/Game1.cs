@@ -25,13 +25,14 @@ public class Game1 : Game
     private Song song;
     private Menu menu;
     private Texture2D cursor;
-    //private Texture2D cursorHand;
     private Owl owl;
     private DialogBox dialogBox;
     private SpriteFont dialogFont;
     private Book openedBook;
-    private Client client1;
-    private Client client2;
+    private Client[] clients;
+    private bool isVisibleOldRating;
+    private bool isVisibleNewRating;
+
     public Game1()
     {
         _graphics = new GraphicsDeviceManager(this);
@@ -58,8 +59,9 @@ public class Game1 : Game
     protected override void LoadContent()
     {
         _spriteBatch = new SpriteBatch(GraphicsDevice);
+        isVisibleOldRating = true;
+        isVisibleNewRating = false;
         cursor = Content.Load<Texture2D>("cursor");
-        //cursorHand = Content.Load<Texture2D>("cursorhand");
         Mouse.SetCursor(MouseCursor.FromTexture2D(cursor, 0, 0));
         background = Content.Load<Texture2D>("room");
         owl = new Owl(Content);
@@ -71,7 +73,7 @@ public class Game1 : Game
         song = Content.Load<Song>("melody");
         openedBook = new Book(Content, book);
         MediaPlayer.Play(song);
-        MediaPlayer.Volume = 0.1f;
+        MediaPlayer.Volume = 0.01f;
         MediaPlayer.IsRepeating = true;
         MediaPlayer.MediaStateChanged += MediaPlayer_MediaStateChanged;
         dialogFont = Content.Load<SpriteFont>("dialogbox");
@@ -79,16 +81,65 @@ public class Game1 : Game
             "Ты - гадалка на таро. Принимай клиентов, нажимая на дверь. " +
             "Затем гадай им по колоде карт на столе, используя книгу с подсказками", GraphicsDevice);
         menu = new Menu(Content);
-        client1 = new Client(Content, _graphics,GraphicsDevice, door, "client1", dialogFont, 
-            "I have problem", new []{"Answer1 aaaaaaaaaaaa aaaaaaaaaaaaaaa aaaaaaaaaaaa aaaaaaaaaaaaaaaaaaaaaaaaaa aaaaaaaaaaaaaaaaaaaaaa", 
-                "Answer2 aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa aaaaaaaaaaaaaaaaaa aaaaaaaaaaaaaaaa aaaaaaa"},
-            1, rating, 
-            cardsDeck, "cardexample", "cardexample", new []{"you're so cool", "fuck you"});
-        client2 = new Client(Content, _graphics,GraphicsDevice, door, "client2", dialogFont, 
-            "I have problem", new []{"Answer1 aaaaaaaaaaaa aaaaaaaaaaaaaaa aaaaaaaaaaaa aaaaaaaaaaaaaaaaaaaaaaaaaa aaaaaaaaaaaaaaaaaaaaaa", 
-                "Answer2 aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa aaaaaaaaaaaaaaaaaa aaaaaaaaaaaaaaaa aaaaaaa"},
-            1, rating, 
-            cardsDeck, "cardexample", "cardexample", new []{"you're so cool", "fuck you"});
+        clients = new[]
+        {
+            new Client(Content, _graphics, GraphicsDevice, door, "client1", dialogFont,
+                "I have problem", new[]
+                {
+                    "Answer 1 aaaaaaaaaaaa aaaaaaaaaaaaaaa aaaaaaaaaaaa aaaaaaaaaaaaaaaaaaaaaaaaaa aaaaaaaaaaaaaaaaaaaaaa",
+                    "Answer 2 aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa aaaaaaaaaaaaaaaaaa aaaaaaaaaaaaaaaa aaaaaaa"
+                },
+                1, rating,
+                cardsDeck, "cardexample", "cardexample", new[] { "you're so cool", "fuck you" }),
+            new Client(Content, _graphics, GraphicsDevice, door, "client2", dialogFont,
+            "I have problem", new[]
+            {
+                "Answer 1 aaaaaaaaaaaa aaaaaaaaaaaaaaa aaaaaaaaaaaa aaaaaaaaaaaaaaaaaaaaaaaaaa aaaaaaaaaaaaaaaaaaaaaa",
+                "Answer 2 aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa aaaaaaaaaaaaaaaaaa aaaaaaaaaaaaaaaa aaaaaaa"
+            },
+            1, rating,
+            cardsDeck, "cardexample", "cardexample", new[] { "you're so cool", "fuck you" }),
+            new Client(Content, _graphics, GraphicsDevice, door, "client3", dialogFont,
+                "I have problem", new[]
+                {
+                    "Answer 1 aaaaaaaaaaaa aaaaaaaaaaaaaaa aaaaaaaaaaaa aaaaaaaaaaaaaaaaaaaaaaaaaa aaaaaaaaaaaaaaaaaaaaaa",
+                    "Answer 2 aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa aaaaaaaaaaaaaaaaaa aaaaaaaaaaaaaaaa aaaaaaa"
+                },
+                1, rating,
+                cardsDeck, "cardexample", "cardexample", new[] { "you're so cool", "fuck you" }),
+            new Client(Content, _graphics, GraphicsDevice, door, "client4", dialogFont,
+                "I have problem", new[]
+                {
+                    "Answer 1 aaaaaaaaaaaa aaaaaaaaaaaaaaa aaaaaaaaaaaa aaaaaaaaaaaaaaaaaaaaaaaaaa aaaaaaaaaaaaaaaaaaaaaa",
+                    "Answer 2 aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa aaaaaaaaaaaaaaaaaa aaaaaaaaaaaaaaaa aaaaaaa"
+                },
+                1, rating,
+                cardsDeck, "cardexample", "cardexample", new[] { "you're so cool", "fuck you" }),
+            new Client(Content, _graphics, GraphicsDevice, door, "client5", dialogFont,
+                "I have problem", new[]
+                {
+                    "Answer 1 aaaaaaaaaaaa aaaaaaaaaaaaaaa aaaaaaaaaaaa aaaaaaaaaaaaaaaaaaaaaaaaaa aaaaaaaaaaaaaaaaaaaaaa",
+                    "Answer 2 aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa aaaaaaaaaaaaaaaaaa aaaaaaaaaaaaaaaa aaaaaaa"
+                },
+                1, rating,
+                cardsDeck, "cardexample", "cardexample", new[] { "you're so cool", "fuck you" }),
+            new Client(Content, _graphics, GraphicsDevice, door, "client6", dialogFont,
+                "I have problem", new[]
+                {
+                    "Answer 1 aaaaaaaaaaaa aaaaaaaaaaaaaaa aaaaaaaaaaaa aaaaaaaaaaaaaaaaaaaaaaaaaa aaaaaaaaaaaaaaaaaaaaaa",
+                    "Answer 2 aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa aaaaaaaaaaaaaaaaaa aaaaaaaaaaaaaaaa aaaaaaa"
+                },
+                1, rating,
+                cardsDeck, "cardexample", "cardexample", new[] { "you're so cool", "fuck you" }),
+            new Client(Content, _graphics, GraphicsDevice, door, "client7", dialogFont,
+                "I have problem", new[]
+                {
+                    "Answer 1 aaaaaaaaaaaa aaaaaaaaaaaaaaa aaaaaaaaaaaa aaaaaaaaaaaaaaaaaaaaaaaaaa aaaaaaaaaaaaaaaaaaaaaa",
+                    "Answer 2 aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa aaaaaaaaaaaaaaaaaa aaaaaaaaaaaaaaaa aaaaaaa"
+                },
+                1, rating,
+                cardsDeck, "cardexample", "cardexample", new[] { "you're so cool", "fuck you" }),
+        };
     }
     
     void MediaPlayer_MediaStateChanged(object sender, EventArgs e)
@@ -105,9 +156,15 @@ public class Game1 : Game
         menu.Update(_graphics);
         dialogBox.Update();
         openedBook.Update();
-        client1.Update(gameTime);
-        if (!client1.IsVisible())
-            client2.Update(gameTime);
+        // client1.Update(gameTime);
+        // if (client1.ClientIsGone())
+        //     client2.Update(gameTime);
+        clients[0].Update(gameTime);
+        for (var i = 1; i < clients.Length; i++)
+        {
+            if (clients[i - 1].ClientIsGone())
+                clients[i].Update(gameTime);
+        }
         base.Update(gameTime);
     }
 
@@ -129,16 +186,26 @@ public class Game1 : Game
             _spriteBatch.Draw(cardsDeck, new Vector2((int)(_graphics.PreferredBackBufferWidth * 0.448), 
                     (int)(_graphics.PreferredBackBufferHeight * 0.798)), null, Color.White,
                 0f, Vector2.Zero, scale, SpriteEffects.None, 0f);
-            _spriteBatch.DrawString(font, client1.UpdateRating().ToString(), new Vector2(90, 30), Color.Black);
+            
             
             _spriteBatch.Draw(cup, new Vector2(15, 10), null, Color.White,
                 0f, Vector2.Zero, scale, SpriteEffects.None, 0f);
             dialogBox.Draw(_spriteBatch, GraphicsDevice);
-            client1.Draw(_spriteBatch, _graphics, GraphicsDevice, scale);
+            if (isVisibleOldRating && isVisibleNewRating == false)
+                _spriteBatch.DrawString(font, rating.ToString(), new Vector2(90, 30), Color.Black);
             
-            if (!client1.IsVisible())
+            clients[0].Draw(_spriteBatch, _graphics, GraphicsDevice, scale);
+            for (var i = 1; i < clients.Length; i++)
             {
-                client2.Draw(_spriteBatch, _graphics, GraphicsDevice, scale);
+                if (clients[i - 1].ClientIsGone())
+                {
+                    var newRat = clients[i - 1].UpdateRating();
+                    isVisibleOldRating = false;
+                    isVisibleNewRating = true;
+                    if (isVisibleNewRating && isVisibleOldRating == false)
+                        _spriteBatch.DrawString(font, newRat.ToString(), new Vector2(90, 30), Color.Black);
+                    clients[i].Draw(_spriteBatch, _graphics, GraphicsDevice, scale);
+                }
             }
             
             var bookClickPosition = new Vector2((int)(_graphics.PreferredBackBufferWidth * 0.625),

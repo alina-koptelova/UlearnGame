@@ -14,12 +14,13 @@ public class MessageBox
     private Texture2D letter;
     private bool isVisible = false;
     private float timer;
-    private const float displayTime = 6f;
+    private const float displayTime = 3f;
 
     public MessageBox(SpriteFont font, string text, GraphicsDevice graphicsDevice, ContentManager content)
     {
         this.font = font;
         this.text = text;
+        isVisible = true;
         rect = new Rectangle((int)(graphicsDevice.Viewport.Width * 0.65), graphicsDevice.Viewport.Height / 28,
             (int)(graphicsDevice.Viewport.Width * 0.28), graphicsDevice.Viewport.Height / 5);
         letter = content.Load<Texture2D>("letter");
@@ -27,7 +28,6 @@ public class MessageBox
 
     public void Update(GameTime gameTime)
     {
-        isVisible = true;
         if (isVisible)
         {
             timer += (float)gameTime.ElapsedGameTime.TotalSeconds;

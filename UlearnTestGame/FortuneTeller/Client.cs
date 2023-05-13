@@ -17,7 +17,7 @@ public class Client
     private int correctAnswerIndex;
     private bool clientIsVisible = false;
     private DialogBox dialogBox;
-    private DialogBox dialogBoxThanks;
+    //private DialogBox dialogBoxThanks;
     private AnswerBox answerBox;
     private MessageBox messageBox1;
     private MessageBox messageBox2;
@@ -25,20 +25,22 @@ public class Client
     private Card cards2;
     private SpriteFont font;
     private int rat;
+    private bool clientIsGone;
 
     public Client(ContentManager content, GraphicsDeviceManager graphics, GraphicsDevice graphicsDevice, 
         Texture2D door, string clientTextureName, SpriteFont font, string problem, string[] options, 
         int correctAnswerIndex, int rating, Texture2D cardsDeck, string cardTexture1Name, string cardTexture2Name,
         string[] messages)
     {
+        clientIsGone = false;
         client = content.Load<Texture2D>(clientTextureName);
         doorRect = new Rectangle((int)(graphics.PreferredBackBufferWidth * 0.896), 
             (int)(graphics.PreferredBackBufferHeight * 0.205), (int)(door.Width * 0.896), door.Height);
         dialogBox = new DialogBox(font, problem, graphicsDevice);
         cards1 = new Card(content, cardsDeck, cardTexture1Name);
         cards2 = new Card(content, cardsDeck, cardTexture2Name);
+        //dialogBoxThanks = new DialogBox(font, "Спасибооооооооооооо оооооооооооооооооооооо оооооооооооооо оооооо оооооооооооо ооооооооооооооо оооооооооооооаааааааооооооооооооооооооооо", graphicsDevice);
         answerBox = new AnswerBox(font, options, correctAnswerIndex, graphicsDevice, rating);
-        dialogBoxThanks = new DialogBox(font, "Thanks", graphicsDevice);
         messageBox1 = new MessageBox(font, messages[0], graphicsDevice, content);
         messageBox2 = new MessageBox(font, messages[1], graphicsDevice, content);
         rat = rating;
@@ -52,38 +54,44 @@ public class Client
             clientIsVisible = true;
             isDoorLocked = true;
         }
-
         if (clientIsVisible)
         {
             dialogBox.Update();
-            if (!dialogBox.IsVisible() && !answerBox.IsAnswerSelected())
-            {
-                cards1.Update(gameTime);
-                cards2.Update(gameTime);
-            }
-            if (cards1.IsFlipped() && cards2.IsFlipped() && !cards1.BookIsOpened() && !cards2.BookIsOpened())
-            {
-                answerBox.Update();
-            }
-            if (answerBox.IsAnswerSelected() && clientIsVisible)
-            {
-                dialogBoxThanks.Update();
-            }
-            if (!dialogBoxThanks.IsVisible())
-            {
-                clientIsVisible = false;
-            }
         }
-        if (answerBox.IsRightAnswer() && !clientIsVisible)
+        if (!dialogBox.IsVisible() && !answerBox.IsAnswerSelected())
         {
-            messageBox1.Update(gameTime);
-            isDoorLocked = false;
+            cards1.Update(gameTime);
+            cards2.Update(gameTime);
         }
-        else if (!answerBox.IsRightAnswer() && !clientIsVisible)
+        if (cards1.IsFlipped() && cards2.IsFlipped() && !cards1.BookIsOpened() && !cards2.BookIsOpened())
         {
-            messageBox2.Update(gameTime);
-            isDoorLocked = false;
+            answerBox.Update();
         }
+        // if (answerBox.IsAnswerSelected())
+        // {
+        //     dialogBoxThanks.Update();
+        // }
+        
+        if (!answerBox.IsVisible())
+        {
+            clientIsVisible = false;
+            clientIsGone = true;
+        }
+
+        if (clientIsGone)
+        {
+            if (answerBox.IsRightAnswer())
+            {
+                messageBox1.Update(gameTime);
+                isDoorLocked = false;
+            }
+            else if (!answerBox.IsRightAnswer())
+            {
+                messageBox2.Update(gameTime);
+                isDoorLocked = false;
+            }
+        }
+
     }
 
     public void Draw(SpriteBatch spriteBatch, GraphicsDeviceManager graphics, 
@@ -98,30 +106,46 @@ public class Client
             spriteBatch.Draw(client, Vector2.Zero, null, Color.White,
                 0f, Vector2.Zero, scale, SpriteEffects.None, 0f);
             dialogBox.Draw(spriteBatch, graphicsDevice);
-            
-            if (!dialogBox.IsVisible() && !answerBox.IsAnswerSelected())
-            {
-                cards1.Draw(spriteBatch, graphics, scale, card1Position);
-                cards2.Draw(spriteBatch, graphics, scale, card2Position);
-            }
-            if (cards1.IsFlipped() && cards2.IsFlipped() && !cards1.BookIsOpened() && !cards2.BookIsOpened())
-            {
-                answerBox.Draw(spriteBatch, graphicsDevice);
-            }
-            if (answerBox.IsAnswerSelected() && clientIsVisible)
-            {
-                dialogBoxThanks.Draw(spriteBatch, graphicsDevice);
-            }
-            if (!dialogBoxThanks.IsVisible())
-                clientIsVisible = false;
         }
-        if (!dialogBoxThanks.IsVisible() && !clientIsVisible)
+        if (!dialogBox.IsVisible() && !answerBox.IsAnswerSelected())
+        {
+            cards1.Draw(spriteBatch, graphics, scale, card1Position);
+            cards2.Draw(spriteBatch, graphics, scale, card2Position);
+        }
+        if (cards1.IsFlipped() && cards2.IsFlipped() && !cards1.BookIsOpened() && !cards2.BookIsOpened())
+        {
+            answerBox.Draw(spriteBatch, graphicsDevice);
+        }
+        // if (answerBox.IsVisible() == false)
+        // {
+        //     dialogBoxThanks.Draw(spriteBatch, graphicsDevice);
+        // }
+        // if (!dialogBoxThanks.IsVisible())
+        // {
+        //     clientIsVisible = false;
+        // }
+        /*if (!dialogBoxThanks.IsVisible())
+        {
+            clientIsVisible = false;
+            
+            if (answerBox.IsRightAnswer())
+            {
+                messageBox1.Draw(spriteBatch, graphicsDevice);
+                
+            }
+            if (!answerBox.IsRightAnswer())
+            {
+                messageBox2.Draw(spriteBatch, graphicsDevice);
+            }
+        }*/
+
+        if (clientIsGone)
         {
             if (answerBox.IsRightAnswer())
             {
                 messageBox1.Draw(spriteBatch, graphicsDevice);
             }
-            else if (!answerBox.IsRightAnswer())
+            if (!answerBox.IsRightAnswer())
             {
                 messageBox2.Draw(spriteBatch, graphicsDevice);
             }
@@ -130,10 +154,15 @@ public class Client
 
     public int UpdateRating()
     {
-        if (!messageBox1.IsVisible()) 
+        if (!messageBox1.IsVisible())
+        {
             return answerBox.GetRating();
+        }
+
         if (!messageBox2.IsVisible())
+        {
             return answerBox.GetRating();
+        }
         return rat;
     }
     
@@ -145,5 +174,10 @@ public class Client
     public bool IsVisible()
     {
         return clientIsVisible;
+    }
+
+    public bool ClientIsGone()
+    {
+        return clientIsGone;
     }
 }
