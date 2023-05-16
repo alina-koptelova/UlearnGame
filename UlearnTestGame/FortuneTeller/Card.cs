@@ -7,32 +7,33 @@ namespace FortuneTeller;
 
 public class Card
 {
-    private Texture2D cardTexture;
-    private Texture2D animationSheet;
-    private Rectangle[] frames;
+    private readonly Texture2D cardTexture;
+    private readonly Texture2D animationSheet;
+    private readonly Rectangle[] frames;
     private int currentFrameIndex;
     private float timer;
-    private float animationSpeed = 0.05f;
+    private const float AnimationSpeed = 0.05f;
     private bool isAnimating;
-    private bool isFlipped = false;
+    private bool isFlipped;
     private Rectangle cardRect;
-    private Vector2 position;
-    private Texture2D cardsDeck;
+    private readonly Texture2D cardsDeck;
     private Rectangle cardsDeckRect;
     private bool isVisible;
     private float opacity;
-    private const float speed = 0.01f;
-    private Texture2D openBookButton;
-    private Book openedBook;
+    private const float Speed = 0.01f;
+    private readonly Texture2D openBookButton;
+    private readonly Book openedBook;
+    private bool canClick;
     
     public Card(ContentManager content, Texture2D cardsDeck, string cardTextureName)
     {
-        cardTexture = content.Load<Texture2D>(cardTextureName); // потом поменять чтобы разное делать
+        cardTexture = content.Load<Texture2D>(cardTextureName);
         animationSheet = content.Load<Texture2D>("cardsAnimation");
         this.cardsDeck = cardsDeck;
         frames = new Rectangle[14];
         openBookButton = content.Load<Texture2D>("openBookButton");
         openedBook = new Book(content, openBookButton);
+        canClick = true;
         
         for (var i = 0; i < 5; i++) 
         {
@@ -55,33 +56,30 @@ public class Card
     {
         openedBook.Update();
         
-        if (Mouse.GetState().LeftButton == ButtonState.Pressed
+        if (canClick && Mouse.GetState().LeftButton == ButtonState.Pressed
             && cardsDeckRect.Contains(Mouse.GetState().Position))
         {
             isVisible = true;
         }
-        
         if (isVisible && Mouse.GetState().LeftButton == ButtonState.Pressed 
-            && cardRect.Contains(Mouse.GetState().Position))
+                      && cardRect.Contains(Mouse.GetState().Position))
         {
             currentFrameIndex = 0;
             isAnimating = true;
             timer = 0f;
         }
-        
-        if (isVisible && opacity < 1f) // если карта должна быть видна и еще не полностью появилась
+        if (isVisible && opacity < 1f)
         {
-            opacity += speed; // постепенно увеличиваем прозрачность
+            opacity += Speed;
             
             if (opacity > 1f) 
-                opacity = 1f; // не даем прозрачности превышать 1
+                opacity = 1f;
         }
-        
         if (isAnimating && !isFlipped)
         {
             timer += (float)gameTime.ElapsedGameTime.TotalSeconds;
             
-            if (timer > animationSpeed)
+            if (timer > AnimationSpeed)
             {
                 timer = 0;
                 currentFrameIndex++;
@@ -129,12 +127,16 @@ public class Card
 
     public bool BookIsOpened()
     {
-        if (!openedBook.IsVisible()) return false;
-        return true;
+        return openedBook.IsVisible();
     }
 
-    public void Hide()
+    public void DeactivateClick()
     {
-        isVisible = false;
+        canClick = false;
+    }
+
+    public void ActivateClick()
+    {
+        canClick = true;
     }
 }

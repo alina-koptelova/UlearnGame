@@ -8,11 +8,11 @@ namespace FortuneTeller;
 
 public class Menu
 {
-    private Texture2D menuBackground;
-    private Texture2D exitButton;
-    private Texture2D startButton;
+    private readonly Texture2D menuBackground;
+    private readonly Texture2D exitButton;
+    private readonly Texture2D startButton;
     private bool isActive;
-    
+
     public Menu(ContentManager content)
     {
         menuBackground = content.Load<Texture2D>("menuback");
@@ -21,13 +21,13 @@ public class Menu
         isActive = true;
     }
 
-    public void Update(GraphicsDeviceManager _graphics)
+    public void Update(GraphicsDeviceManager graphics)
     {
-        var exitButtonRect = new Rectangle((int)(_graphics.PreferredBackBufferWidth * 0.339), 
-            (int)(_graphics.PreferredBackBufferHeight * 0.666), (int)(exitButton.Width * 0.65), 
+        var exitButtonRect = new Rectangle((int)(graphics.PreferredBackBufferWidth * 0.339), 
+            (int)(graphics.PreferredBackBufferHeight * 0.666), (int)(exitButton.Width * 0.65), 
             (int)(exitButton.Height * 0.666));
-        var startButtonRect = new Rectangle((int)(_graphics.PreferredBackBufferWidth * 0.339), 
-            (int)(_graphics.PreferredBackBufferHeight * 0.46), (int)(startButton.Width * 0.65), 
+        var startButtonRect = new Rectangle((int)(graphics.PreferredBackBufferWidth * 0.339), 
+            (int)(graphics.PreferredBackBufferHeight * 0.46), (int)(startButton.Width * 0.65), 
             (int)(startButton.Height * 0.46));
 
         if (isActive && Mouse.GetState().LeftButton == ButtonState.Pressed && 
@@ -43,15 +43,17 @@ public class Menu
         }
     }
     
-    public void Draw(SpriteBatch _spriteBatch, GraphicsDeviceManager _graphics, float scale)
+    public void Draw(SpriteBatch spriteBatch, GraphicsDeviceManager graphics, float scale)
     {
         if (isActive)
         {
-            _spriteBatch.Draw(menuBackground, Vector2.Zero, null, Color.White,
+            spriteBatch.Draw(menuBackground, Vector2.Zero, null, Color.White,
                 0f, Vector2.Zero, scale, SpriteEffects.None, 0f);
-            _spriteBatch.Draw(startButton, new Vector2((int)(_graphics.PreferredBackBufferWidth * 0.339), (int)(_graphics.PreferredBackBufferHeight * 0.46)), null, Color.White,
+            spriteBatch.Draw(startButton, new Vector2((int)(graphics.PreferredBackBufferWidth * 0.339), 
+                    (int)(graphics.PreferredBackBufferHeight * 0.46)), null, Color.White,
                 0f, Vector2.Zero, scale, SpriteEffects.None, 0f);
-            _spriteBatch.Draw(exitButton, new Vector2((int)(_graphics.PreferredBackBufferWidth * 0.339), (int)(_graphics.PreferredBackBufferHeight * 0.666)), null, Color.White,
+            spriteBatch.Draw(exitButton, new Vector2((int)(graphics.PreferredBackBufferWidth * 0.339), 
+                    (int)(graphics.PreferredBackBufferHeight * 0.666)), null, Color.White,
                 0f, Vector2.Zero, scale, SpriteEffects.None, 0f);
         }
     }

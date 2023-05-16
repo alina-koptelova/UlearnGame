@@ -9,7 +9,8 @@
       "FortuneTeller/1.0.0": {
         "dependencies": {
           "MonoGame.Content.Builder.Task": "3.8.1.303",
-          "MonoGame.Framework.WindowsDX": "3.8.1.303"
+          "MonoGame.Framework.WindowsDX": "3.8.1.303",
+          "SharpDX.MediaFoundation": "4.0.1"
         },
         "runtime": {
           "FortuneTeller.dll": {}

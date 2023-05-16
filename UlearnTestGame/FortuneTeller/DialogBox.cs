@@ -1,18 +1,15 @@
 ﻿using System.Collections.Generic;
-using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
-using Color = Microsoft.Xna.Framework.Color;
-using Rectangle = Microsoft.Xna.Framework.Rectangle;
-using Vector2 = Microsoft.Xna.Framework.Vector2;
+using Microsoft.Xna.Framework;
 using System.Text;
 
 namespace FortuneTeller;
 
 public class DialogBox
 {
-    private string text;
-    private SpriteFont font;
+    private readonly string text;
+    private readonly SpriteFont font;
     private bool isVisible;
     private Rectangle rect;
 
@@ -39,7 +36,6 @@ public class DialogBox
             var screenWidth = graphicsDevice.Viewport.Width;
             var texture = GenerateTexture(graphicsDevice, rect);
             spriteBatch.Draw(texture, rect, Color.Black);
-
             var lines = WrapText(text, screenWidth - 40);
             float offsetY = rect.Y + 20;
             float offsetX = rect.X + 20 ;
@@ -62,7 +58,7 @@ public class DialogBox
             data[i] = Color.Black;
         
         texture.SetData(data);
-
+        
         return texture;
     }
 

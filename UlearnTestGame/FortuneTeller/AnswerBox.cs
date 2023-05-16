@@ -8,19 +8,17 @@ namespace FortuneTeller;
 
 public class AnswerBox
 {
-    private string[] options;
-    private int correctAnswerIndex;
+    private readonly string[] options;
+    private readonly int correctAnswerIndex;
     private int selectedAnswerIndex = -1;
-    private SpriteFont font;
+    private readonly SpriteFont font;
     private bool isVisible;
-    private Rectangle rect;
-    private bool isAnswerSelected = false;
-    private int rating;
+    private readonly Rectangle rect;
+    private bool isAnswerSelected;
 
     public AnswerBox(SpriteFont font, string[] options, int correctAnswerIndex, 
-        GraphicsDevice graphicsDevice, int rating)
+        GraphicsDevice graphicsDevice)
     {
-        this.rating = rating;
         this.font = font;
         this.options = options;
         isVisible = true;
@@ -45,8 +43,8 @@ public class AnswerBox
                     selectedAnswerIndex = i;
                     isAnswerSelected = true;
                     isVisible = false;
-                    UpdateRating();
                 }
+                
                 offsetY += font.MeasureString(options[i]).Y + 10;
                 
                 if (i == 0)
@@ -55,22 +53,6 @@ public class AnswerBox
                     offsetX += 40;
                 }
             }
-            // if (isAnswerSelected)
-            // {
-            //     isVisible = false;
-            // }
-            // if (!isVisible)
-            // {
-            //     dialogBoxThanks.Update();
-            // }
-            // if (!dialogBoxThanks.IsVisible())
-            //      UpdateRating();
-            // if (!isVisible)
-            // {
-            //     dialogBoxThanks.Update();
-            // }
-            // if (!dialogBoxThanks.IsVisible())
-            //     UpdateRating();
         }
     }
 
@@ -107,8 +89,6 @@ public class AnswerBox
                 offsetY += 30;
             }
         }
-        // if (isVisible == false) 
-        //     dialogBoxThanks.Draw(spriteBatch, graphicsDevice);
     }
 
     private static Texture2D GenerateTexture(GraphicsDevice graphicsDevice, Rectangle rect, Color color)
@@ -120,7 +100,7 @@ public class AnswerBox
             data[i] = color;
         
         texture.SetData(data);
-
+        
         return texture;
     }
 
@@ -164,21 +144,6 @@ public class AnswerBox
     public bool IsAnswerSelected()
     {
         return isAnswerSelected;
-    }
-    public void UpdateRating()
-    {
-        if (IsRightAnswer())
-        {
-            rating--;
-        }
-        else
-        {
-            rating++;
-        }
-    }
-    public int GetRating()
-    {
-        return rating;
     }
 
     public bool IsVisible()

@@ -68,3 +68,6 @@ C:\Users\User36\RiderProjects\Game\UlearnTestGame\FortuneTeller\bin\Debug\net6.0
 C:\Users\User36\RiderProjects\Game\UlearnTestGame\FortuneTeller\bin\Debug\net6.0-windows\Content\cross.xnb
 C:\Users\User36\RiderProjects\Game\UlearnTestGame\FortuneTeller\bin\Debug\net6.0-windows\Content\letter.xnb
 C:\Users\User36\RiderProjects\Game\UlearnTestGame\FortuneTeller\bin\Debug\net6.0-windows\Content\openBookButton.xnb
+C:\Users\User36\RiderProjects\Game\UlearnTestGame\FortuneTeller\bin\Debug\net6.0-windows\Content\happyEnd.xnb
+C:\Users\User36\RiderProjects\Game\UlearnTestGame\FortuneTeller\bin\Debug\net6.0-windows\Content\sadEnd.xnb
+C:\Users\User36\RiderProjects\Game\UlearnTestGame\FortuneTeller\bin\Debug\net6.0-windows\Content\exitButton.xnb

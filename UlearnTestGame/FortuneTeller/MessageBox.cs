@@ -12,7 +12,7 @@ public class MessageBox
     private SpriteFont font;
     private Rectangle rect;
     private Texture2D letter;
-    private bool isVisible = false;
+    private bool isVisible;
     private float timer;
     private const float displayTime = 3f;
 

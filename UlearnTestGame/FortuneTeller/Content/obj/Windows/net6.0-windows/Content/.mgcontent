@@ -24,7 +24,9 @@
     <File>C:/Users/User36/RiderProjects/Game/UlearnTestGame/FortuneTeller/Content/dialogbox.spritefont</File>
     <File>C:/Users/User36/RiderProjects/Game/UlearnTestGame/FortuneTeller/Content/door.png</File>
     <File>C:/Users/User36/RiderProjects/Game/UlearnTestGame/FortuneTeller/Content/exit.png</File>
+    <File>C:/Users/User36/RiderProjects/Game/UlearnTestGame/FortuneTeller/Content/exitButton.png</File>
     <File>C:/Users/User36/RiderProjects/Game/UlearnTestGame/FortuneTeller/Content/File.spritefont</File>
+    <File>C:/Users/User36/RiderProjects/Game/UlearnTestGame/FortuneTeller/Content/happyEnd.png</File>
     <File>C:/Users/User36/RiderProjects/Game/UlearnTestGame/FortuneTeller/Content/letter.png</File>
     <File>C:/Users/User36/RiderProjects/Game/UlearnTestGame/FortuneTeller/Content/melody.mp3</File>
     <File>C:/Users/User36/RiderProjects/Game/UlearnTestGame/FortuneTeller/Content/menuback.png</File>
@@ -32,6 +34,7 @@
     <File>C:/Users/User36/RiderProjects/Game/UlearnTestGame/FortuneTeller/Content/openBookButton.png</File>
     <File>C:/Users/User36/RiderProjects/Game/UlearnTestGame/FortuneTeller/Content/owlleft.png</File>
     <File>C:/Users/User36/RiderProjects/Game/UlearnTestGame/FortuneTeller/Content/owlright.png</File>
+    <File>C:/Users/User36/RiderProjects/Game/UlearnTestGame/FortuneTeller/Content/sadEnd.png</File>
     <File>C:/Users/User36/RiderProjects/Game/UlearnTestGame/FortuneTeller/Content/start.png</File>
   </SourceFiles>
   <DestFiles>
@@ -57,12 +60,15 @@
     <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
+    <File>sadEnd.png</File>
     <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File>happyEnd.png</File>
     <File xsi:nil="true" />
   </DestFiles>
 </SourceFileCollection>

@@ -7,32 +7,38 @@ namespace FortuneTeller;
 
 public class Book
 {
-    private Texture2D openedBook;
-    private Texture2D cross;
+    private readonly Texture2D openedBook;
+    private readonly Texture2D cross;
     private Rectangle crossRect;
-    private Texture2D textureToOpen;
+    private readonly Texture2D textureToOpen;
     private Rectangle textureToOpenRect;
     private bool isVisible;
+    private bool canClick;
 
     public Book(ContentManager content, Texture2D textureToOpen)
     {
         openedBook = content.Load<Texture2D>("openbook");
         cross = content.Load<Texture2D>("cross");
         this.textureToOpen = textureToOpen;
+        canClick = true;
     }
 
     public void Update()
     {
-        if (Mouse.GetState().LeftButton == ButtonState.Pressed
-            && textureToOpenRect.Contains(Mouse.GetState().Position))
+        if (canClick)
         {
-            isVisible = true;
+            if (Mouse.GetState().LeftButton == ButtonState.Pressed
+                && textureToOpenRect.Contains(Mouse.GetState().Position))
+            {
+                isVisible = true;
+            }
+            if (Mouse.GetState().LeftButton == ButtonState.Pressed
+                && crossRect.Contains(Mouse.GetState().Position))
+            {
+                isVisible = false;
+            }
         }
-        if (Mouse.GetState().LeftButton == ButtonState.Pressed
-            && crossRect.Contains(Mouse.GetState().Position))
-        {
-            isVisible = false;
-        }
+
     }
 
     public void Draw(SpriteBatch spriteBatch, GraphicsDeviceManager graphics, float scale, Vector2 textureToOpenPosition)
@@ -56,5 +62,15 @@ public class Book
     public bool IsVisible()
     {
         return isVisible;
+    }
+
+    public void ActivateClick()
+    {
+        canClick = true;
+    }
+    
+    public void DeactivateClick()
+    {
+        canClick = false;
     }
 }

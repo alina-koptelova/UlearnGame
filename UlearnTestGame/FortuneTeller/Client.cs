@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework;
+﻿using System.Timers;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
@@ -8,29 +9,22 @@ namespace FortuneTeller;
 public class Client
 {
     private Rectangle doorRect;
-    private bool isDoorLocked = false;
-    private string clientTextureName;
-    private Texture2D client;
-    private string problem;
-    private string[] options;
-    private string[] messages;
-    private int correctAnswerIndex;
-    private bool clientIsVisible = false;
-    private DialogBox dialogBox;
-    //private DialogBox dialogBoxThanks;
-    private AnswerBox answerBox;
-    private MessageBox messageBox1;
-    private MessageBox messageBox2;
-    private Card cards1;
-    private Card cards2;
-    private SpriteFont font;
-    private int rat;
+    private bool isDoorLocked;
+    private readonly Texture2D client;
+    private bool clientIsVisible;
+    private readonly DialogBox dialogBox;
+    private readonly AnswerBox answerBox;
+    private readonly MessageBox messageBox1;
+    private readonly MessageBox messageBox2;
+    private readonly Card cards1;
+    private readonly Card cards2;
     private bool clientIsGone;
+    private readonly Book openedBook;
 
     public Client(ContentManager content, GraphicsDeviceManager graphics, GraphicsDevice graphicsDevice, 
         Texture2D door, string clientTextureName, SpriteFont font, string problem, string[] options, 
-        int correctAnswerIndex, int rating, Texture2D cardsDeck, string cardTexture1Name, string cardTexture2Name,
-        string[] messages)
+        int correctAnswerIndex, Texture2D cardsDeck, string cardTexture1Name, string cardTexture2Name,
+        string[] messages, Book openedBook)
     {
         clientIsGone = false;
         client = content.Load<Texture2D>(clientTextureName);
@@ -39,11 +33,10 @@ public class Client
         dialogBox = new DialogBox(font, problem, graphicsDevice);
         cards1 = new Card(content, cardsDeck, cardTexture1Name);
         cards2 = new Card(content, cardsDeck, cardTexture2Name);
-        //dialogBoxThanks = new DialogBox(font, "Спасибооооооооооооо оооооооооооооооооооооо оооооооооооооо оооооо оооооооооооо ооооооооооооооо оооооооооооооаааааааооооооооооооооооооооо", graphicsDevice);
-        answerBox = new AnswerBox(font, options, correctAnswerIndex, graphicsDevice, rating);
+        answerBox = new AnswerBox(font, options, correctAnswerIndex, graphicsDevice);
         messageBox1 = new MessageBox(font, messages[0], graphicsDevice, content);
         messageBox2 = new MessageBox(font, messages[1], graphicsDevice, content);
-        rat = rating;
+        this.openedBook = openedBook;
     }
 
     public void Update(GameTime gameTime)
@@ -58,6 +51,17 @@ public class Client
         {
             dialogBox.Update();
         }
+        if (dialogBox.IsVisible())
+        {
+            cards1.DeactivateClick();
+            cards2.DeactivateClick();
+            openedBook.DeactivateClick();
+        }
+        
+        if (!dialogBox.IsVisible())
+        {
+            ActivateClick();
+        }
         if (!dialogBox.IsVisible() && !answerBox.IsAnswerSelected())
         {
             cards1.Update(gameTime);
@@ -67,17 +71,12 @@ public class Client
         {
             answerBox.Update();
         }
-        // if (answerBox.IsAnswerSelected())
-        // {
-        //     dialogBoxThanks.Update();
-        // }
-        
+
         if (!answerBox.IsVisible())
         {
             clientIsVisible = false;
             clientIsGone = true;
         }
-
         if (clientIsGone)
         {
             if (answerBox.IsRightAnswer())
@@ -91,7 +90,6 @@ public class Client
                 isDoorLocked = false;
             }
         }
-
     }
 
     public void Draw(SpriteBatch spriteBatch, GraphicsDeviceManager graphics, 
@@ -116,29 +114,6 @@ public class Client
         {
             answerBox.Draw(spriteBatch, graphicsDevice);
         }
-        // if (answerBox.IsVisible() == false)
-        // {
-        //     dialogBoxThanks.Draw(spriteBatch, graphicsDevice);
-        // }
-        // if (!dialogBoxThanks.IsVisible())
-        // {
-        //     clientIsVisible = false;
-        // }
-        /*if (!dialogBoxThanks.IsVisible())
-        {
-            clientIsVisible = false;
-            
-            if (answerBox.IsRightAnswer())
-            {
-                messageBox1.Draw(spriteBatch, graphicsDevice);
-                
-            }
-            if (!answerBox.IsRightAnswer())
-            {
-                messageBox2.Draw(spriteBatch, graphicsDevice);
-            }
-        }*/
-
         if (clientIsGone)
         {
             if (answerBox.IsRightAnswer())
@@ -152,32 +127,40 @@ public class Client
         }
     }
 
-    public int UpdateRating()
+    public int GetRating(int rating)
     {
-        if (!messageBox1.IsVisible())
+        if (answerBox.IsAnswerSelected())
         {
-            return answerBox.GetRating();
+            if (answerBox.IsRightAnswer())
+                rating -= 1;
+            if (!answerBox.IsRightAnswer())
+                rating += 1;
         }
 
-        if (!messageBox2.IsVisible())
-        {
-            return answerBox.GetRating();
-        }
-        return rat;
-    }
-    
-    public bool IsDoorLocked()
-    {
-        return isDoorLocked;
+        return rating;
     }
 
-    public bool IsVisible()
+    public bool IsMessageBoxNotVisible()
     {
-        return clientIsVisible;
+        return answerBox.IsAnswerSelected() && (!messageBox1.IsVisible() || !messageBox2.IsVisible());
     }
 
     public bool ClientIsGone()
     {
         return clientIsGone;
+    }
+    
+    private void ActivateClick()
+    {
+        var timer = new Timer(500);
+        
+        timer.Elapsed += (s, e) =>
+        {
+            cards1.ActivateClick();
+            cards2.ActivateClick();
+            openedBook.ActivateClick();
+            timer.Dispose();
+        };
+        timer.Start();
     }
 }
