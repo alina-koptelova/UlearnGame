@@ -71,3 +71,15 @@ C:\Users\User36\RiderProjects\Game\UlearnTestGame\FortuneTeller\bin\Debug\net6.0
 C:\Users\User36\RiderProjects\Game\UlearnTestGame\FortuneTeller\bin\Debug\net6.0-windows\Content\happyEnd.xnb
 C:\Users\User36\RiderProjects\Game\UlearnTestGame\FortuneTeller\bin\Debug\net6.0-windows\Content\sadEnd.xnb
 C:\Users\User36\RiderProjects\Game\UlearnTestGame\FortuneTeller\bin\Debug\net6.0-windows\Content\exitButton.xnb
+C:\Users\User36\RiderProjects\Game\UlearnTestGame\FortuneTeller\bin\Debug\net6.0-windows\Content\messageBoxFont.xnb
+C:\Users\User36\RiderProjects\Game\UlearnTestGame\FortuneTeller\bin\Debug\net6.0-windows\Content\5cups.xnb
+C:\Users\User36\RiderProjects\Game\UlearnTestGame\FortuneTeller\bin\Debug\net6.0-windows\Content\knightofswords.xnb
+C:\Users\User36\RiderProjects\Game\UlearnTestGame\FortuneTeller\bin\Debug\net6.0-windows\Content\knightofcups.xnb
+C:\Users\User36\RiderProjects\Game\UlearnTestGame\FortuneTeller\bin\Debug\net6.0-windows\Content\star.xnb
+C:\Users\User36\RiderProjects\Game\UlearnTestGame\FortuneTeller\bin\Debug\net6.0-windows\Content\hermit.xnb
+C:\Users\User36\RiderProjects\Game\UlearnTestGame\FortuneTeller\bin\Debug\net6.0-windows\Content\strength.xnb
+C:\Users\User36\RiderProjects\Game\UlearnTestGame\FortuneTeller\bin\Debug\net6.0-windows\Content\10pentacles.xnb
+C:\Users\User36\RiderProjects\Game\UlearnTestGame\FortuneTeller\bin\Debug\net6.0-windows\Content\fortune.xnb
+C:\Users\User36\RiderProjects\Game\UlearnTestGame\FortuneTeller\bin\Debug\net6.0-windows\Content\tower.xnb
+C:\Users\User36\RiderProjects\Game\UlearnTestGame\FortuneTeller\bin\Debug\net6.0-windows\Content\lovers.xnb
+C:\Users\User36\RiderProjects\Game\UlearnTestGame\FortuneTeller\bin\Debug\net6.0-windows\Content\magician.xnb

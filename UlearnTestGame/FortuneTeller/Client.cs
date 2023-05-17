@@ -34,8 +34,8 @@ public class Client
         cards1 = new Card(content, cardsDeck, cardTexture1Name);
         cards2 = new Card(content, cardsDeck, cardTexture2Name);
         answerBox = new AnswerBox(font, options, correctAnswerIndex, graphicsDevice);
-        messageBox1 = new MessageBox(font, messages[0], graphicsDevice, content);
-        messageBox2 = new MessageBox(font, messages[1], graphicsDevice, content);
+        messageBox1 = new MessageBox(messages[0], graphicsDevice, content);
+        messageBox2 = new MessageBox(messages[1], graphicsDevice, content);
         this.openedBook = openedBook;
     }
 

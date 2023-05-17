@@ -34,6 +34,7 @@ public class Game1 : Game
     private Ending ending;
     private Texture2D exitButton;
     private Rectangle exitButtonRect;
+    private bool isExitButtonVisible;
 
     public Game1()
     {
@@ -77,74 +78,120 @@ public class Game1 : Game
         menu = new Menu(Content);
         ending = new Ending(Content);
         exitButton = Content.Load<Texture2D>("exitButton");
+        isExitButtonVisible = false;
         exitButtonRect = new Rectangle((int)(graphics.PreferredBackBufferWidth * 0.001), 
             (int)(graphics.PreferredBackBufferHeight * 0.89), (int)(exitButton.Width * 0.61), 
             (int)(exitButton.Height * 0.72));
         clients = new[]
         { 
             new Client(Content, graphics, GraphicsDevice, door, "client1", dialogFont,
-                "I have problem", new[]
+                "Я конечно не очень доверяю вашим картам...Но мне очень нравится одна девушка..." +
+                "Чувствует ли она ко мне то же, что и я к ней?", 
+                new[]
                 {
-                    "Answer 1 aaaaaaaaaaaa aaaaaaaaaaaaaaa aaaaaaaaaaaa aaaaaaaaaaaaaaaaaaaaaaaaaa aaaaaaaaaaaaaaaaaaaaaa",
-                    "Answer 2 aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa aaaaaaaaaaaaaaaaaa aaaaaaaaaaaaaaaa aaaaaaa"
+                    "Девушка относится к вам как к другу, и, по ее мыслям, у вас не может быть более глубоких отношений." +
+                    "Не стоит признаваться ей в любви, так вы только отстранитесь",
+                    "Карты говорят, что девушка чувствует к вам то же самое. Она влюблена, и скоро может " +
+                    "проявить свои чувства. Будьте терпеливы"
                 },
                 1,
-                cardsDeck, "cardexample", "cardexample", 
-                new[] { "you're so cool", "fuck you" }, openedBook),
+                cardsDeck, "lovers", "hermit", 
+                new[] { "Я решил довериться вашему раскладу и признаться в чувствах. Теперь мы с ней встречаемся! " +
+                        "     Вы суперская     гадалка!", 
+                    "Так и знал, что не стоит верить всем этим таро... Я признался ей, и оказалось, что наши чувства взаимны! " +
+                    "     А вы что      говорили? А?" }, openedBook),
             new Client(Content, graphics, GraphicsDevice, door, "client2", dialogFont,
-            "I have problem", new[]
+            "Я всю жизнь мечтаю стать магом, но научиться так сложно...Может мне стоит стать как вы? :)", 
+            new[]
             {
-                "Answer 1 aaaaaaaaaaaa aaaaaaaaaaaaaaa aaaaaaaaaaaa aaaaaaaaaaaaaaaaaaaaaaaaaa aaaaaaaaaaaaaaaaaaaaaa",
-                "Answer 2 aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa aaaaaaaaaaaaaaaaaa aaaaaaaaaaaaaaaa aaaaaaa"
+                "Карты указывают на то, что ваш путь к освоению таро окажется полон неприятностей и сложностей, и лучше" +
+                " не начинать это дело вообще.",
+                "Возможностей для изучения таро будет много, но не все из них будут успешными. Важно быть настойчивым и" +
+                " не сдаваться на первых удачных попытках. "
             },
             1, 
-            cardsDeck, "cardexample", "cardexample", 
-            new[] { "you're so cool", "fuck you" }, openedBook),
+            cardsDeck, "magician", "fortune", 
+            new[] { "Я начал изучать таро после вашего расклада. Вы были правы, у меня неплохо получается! " +
+                    "   Смотрите, как бы    я не увел у вас клиентов :)", 
+                "Наверное, вы специально так сказали! Боитесь, что уведу у вас клиентов? У меня уже очень хорошо " +
+                "получается гадать, ха-ха!" }, openedBook),
             new Client(Content, graphics, GraphicsDevice, door, "client3", dialogFont,
-                "I have problem", new[]
+                "У меня скоро такоой трудный экзамен по векторке! Что мне нужно сделать, чтобы сдать этот " +
+                "экзамен??",
+                new[]
                 {
-                    "Answer 1 aaaaaaaaaaaa aaaaaaaaaaaaaaa aaaaaaaaaaaa aaaaaaaaaaaaaaaaaaaaaaaaaa aaaaaaaaaaaaaaaaaaaaaa",
-                    "Answer 2 aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa aaaaaaaaaaaaaaaaaa aaaaaaaaaaaaaaaa aaaaaaa"
+                    "Пересмотрите свой подход к учебе. Удача сейчас на вашей стороне, и если вы будете усердно" +
+                    " стараться, то экзамен пройдет успешно",
+                    "Вам стоит бросить университет, найти богатого мужчину и забыть наконец об учебе!"
                 },
-                1, 
-                cardsDeck, "cardexample", "cardexample", 
-                new[] { "you're so cool", "fuck you" }, openedBook),
+                0, 
+                cardsDeck, "tower", "fortune", 
+                new[] { "Ваша трактовка помогла мне поверить в себя и найти энтузиазм для учебы. " +
+                        "Я сдала экзамен!!! Огромное спасибо!", 
+                    "Ваш расклад был крайне странным...Но вместо богатого мужчины я нашла умников, которые помогли" +
+                    " мне подготовиться к экзамену..."}, openedBook),
             new Client(Content, graphics, GraphicsDevice, door, "client4", dialogFont,
-                "I have problem", new[]
+                "Я не плохой человек, но в моей жизни нет близких друзей. Я чувствую себя одиноко, но " +
+                "стесняюсь обращаться к людям и легко заводить новые знакомства. Что же мне делать?", 
+                new[]
                 {
-                    "Answer 1 aaaaaaaaaaaa aaaaaaaaaaaaaaa aaaaaaaaaaaa aaaaaaaaaaaaaaaaaaaaaaaaaa aaaaaaaaaaaaaaaaaaaaaa",
-                    "Answer 2 aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa aaaaaaaaaaaaaaaaaa aaaaaaaaaaaaaaaa aaaaaaa"
+                    "Карты указывают, что у тебя есть способности, которые могут помочь тебе найти друзей. Тебе стоит" +
+                    " использовать опыт и умение прислушиваться, чтобы установить связь с людьми",
+                    "Твоя социальная неприязнь - следствие твоих недостатков и привычек. Карты указывают, что" +
+                    " нужно меняться, чтобы обрести друзей, которые будут тебя понимать и полюбят тебя"
                 },
-                1, 
-                cardsDeck, "cardexample", "cardexample", 
-                new[] { "you're so cool", "fuck you" }, openedBook),
+                0, 
+                cardsDeck, "star", "knightofcups", 
+                new[] { "Я начинаю понимать, что мой опыт может быть ключом к тому, чтобы находить" +
+                        " общие темы с людьми. Я постараюсь   открыться для    новых знакомств!", 
+                    "Я ожидала от вас конкретных советов, а не банальные слова о том, что мне нужно приобретать новых" +
+                    " друзей. Это было полное   разочарование!" }, openedBook),
             new Client(Content, graphics, GraphicsDevice, door, "client5", dialogFont,
-                "I have problem", new[]
+                "Я сейчас в сложной ситуации, потому что не могу определиться между двумя парнями... " +
+                "Один из них мой давний друг, а другой - новый знакомый, с которым меня связывают сильные чувства", 
+                new[]
                 {
-                    "Answer 1 aaaaaaaaaaaa aaaaaaaaaaaaaaa aaaaaaaaaaaa aaaaaaaaaaaaaaaaaaaaaaaaaa aaaaaaaaaaaaaaaaaaaaaa",
-                    "Answer 2 aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa aaaaaaaaaaaaaaaaaa aaaaaaaaaaaaaaaa aaaaaaa"
+                    "Ты должна выбрать стабильность и безопасность, а не основывать жизнь на эмоциях. Не рискуй своим " +
+                    "будущим," + " найди уверенность в том, что ты сделала правильный выбор",
+                    "Важно не позволять прошлому мешать тебе в принятии решения и следовать своим эмоциям и интуиции. " +
+                    "Помни, что тебе нужно слушать своё сердце, чтобы принять правильное решение"
                 },
                 1, 
-                cardsDeck, "cardexample", "cardexample", 
-                new[] { "you're so cool", "fuck you" }, openedBook),
+                cardsDeck, "5cups", "knightofswords", 
+                new[] { "Твоя трактовка была очень мудрой! Я следовала своим чувствам и выбрала того, " +
+                        "кого я действительно     люблю. Спасибо       за твои советы!", 
+                    "Я поступила так, как вы сказали и бросила своего парня, а оказалось у моего друга нет чувств ко мне!" +
+                    " Вы навсегда испортили все      мои отношения!" }, openedBook),
             new Client(Content, graphics, GraphicsDevice, door, "client6", dialogFont,
-                "I have problem", new[]
+                "Я такая неуклюжая и беспорядочная! У меня сильный стресс из-за своей неряшливости, но я никак " +
+                "не могу организоваться и держать свой дом в чистоте, помогите мне...", 
+                new[]
                 {
-                    "Answer 1 aaaaaaaaaaaa aaaaaaaaaaaaaaa aaaaaaaaaaaa aaaaaaaaaaaaaaaaaaaaaaaaaa aaaaaaaaaaaaaaaaaaaaaa",
-                    "Answer 2 aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa aaaaaaaaaaaaaaaaaa aaaaaaaaaaaaaaaa aaaaaaa"
+                    "Вы должны научиться быть терпеливой. Начните прививать себе привычку " +
+                    "поддерживать свой дом в чистоте и порядке. Со временем станет проще, и вы будете получать удовольствие",
+                    "Вы должны забыть об этом и просто расслабиться. Перестаньте беспокоиться о том, что дом не в " +
+                    "идеальном состоянии, находите удовольствие в жизни, и все проблемы сами решатся"
                 },
-                1, 
-                cardsDeck, "cardexample", "cardexample", 
-                new[] { "you're so cool", "fuck you" }, openedBook),
+                0, 
+                cardsDeck, "strength", "hermit", 
+                new[] { "Я осталась очень довольна трактовкой! Я стараюсь организовывать свое время, " +
+                        "и, кажется, жизнь начинает улучшаться.    Спасибочки!", 
+                    "Ожидала, что ваши советы мне помогут, но по итогу в моей жизни ничего не изменилось. " +
+                    "Зря потраченные     деньги!" }, openedBook),
             new Client(Content, graphics, GraphicsDevice, door, "client7", dialogFont,
-                "I have problem", new[]
+                "Я постоянно трачу много денег и остаюсь без них до конца месяца, мне не хватает стипендии " +
+                "на все расходы. Как мне выжить? :(", 
+                new[]
                 {
-                    "Answer 1 aaaaaaaaaaaa aaaaaaaaaaaaaaa aaaaaaaaaaaa aaaaaaaaaaaaaaaaaaaaaaaaaa aaaaaaaaaaaaaaaaaaaaaa",
-                    "Answer 2 aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa aaaaaaaaaaaaaaaaaa aaaaaaaaaaaaaaaa aaaaaaa"
+                    "Тебе необходимо более осознано планировать свой бюджет и экономить деньги на важные расходы. " +
+                    "Имей терпение, устроение финансовой ситуации требует времени",
+                    "Тебе нужно найти работу, чтобы выйти из финансовых проблем. Смирись, только это и будет решением" +
+                    " всех твоих проблем"
                 },
-                1, 
-                cardsDeck, "cardexample", "cardexample", 
-                new[] { "you're so cool", "fuck you" }, openedBook),
+                0, 
+                cardsDeck, "10pentacles", "fortune", 
+                new[] { "Ваш расклад открыл мне глаза! Теперь я планирую бюджет и не умру с голода в общаге!!", 
+                    "Ваша трактовка абсолютно бесполезна! Я слетел со стипы, я не могу совмещать учебу и работу!" }, openedBook),
         };
     }
 
@@ -156,7 +203,7 @@ public class Game1 : Game
         owl.Update(gameTime);
         menu.Update(graphics);
 
-        if (Mouse.GetState().LeftButton == ButtonState.Pressed && 
+        if (isExitButtonVisible && Mouse.GetState().LeftButton == ButtonState.Pressed && 
             exitButtonRect.Contains(Mouse.GetState().Position))
         {
             Exit();
@@ -179,7 +226,7 @@ public class Game1 : Game
         base.Update(gameTime);
     }
 
-    protected override async void Draw(GameTime gameTime)
+    protected override void Draw(GameTime gameTime)
     {
         GraphicsDevice.Clear(Color.CornflowerBlue);
         spriteBatch.Begin();
@@ -225,6 +272,7 @@ public class Game1 : Game
                     {
                         if (newRating <= 3)
                         {
+                            isExitButtonVisible = true;
                             ending.Draw(spriteBatch, scale, false);
                             spriteBatch.Draw(exitButton, new Vector2((int)(graphics.PreferredBackBufferWidth * 0.01), 
                                     (int)(graphics.PreferredBackBufferHeight * 0.907)), null, Color.White,
@@ -232,6 +280,7 @@ public class Game1 : Game
                         }
                         else
                         {
+                            isExitButtonVisible = true;
                             ending.Draw(spriteBatch, scale, true);
                             spriteBatch.Draw(exitButton, new Vector2((int)(graphics.PreferredBackBufferWidth * 0.01), 
                                     (int)(graphics.PreferredBackBufferHeight * 0.907)), null, Color.White,

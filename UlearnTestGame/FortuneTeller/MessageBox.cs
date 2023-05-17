@@ -16,9 +16,9 @@ public class MessageBox
     private float timer;
     private const float displayTime = 3f;
 
-    public MessageBox(SpriteFont font, string text, GraphicsDevice graphicsDevice, ContentManager content)
+    public MessageBox(string text, GraphicsDevice graphicsDevice, ContentManager content)
     {
-        this.font = font;
+        font = content.Load<SpriteFont>("messageBoxFont");
         this.text = text;
         isVisible = true;
         rect = new Rectangle((int)(graphicsDevice.Viewport.Width * 0.65), graphicsDevice.Viewport.Height / 28,

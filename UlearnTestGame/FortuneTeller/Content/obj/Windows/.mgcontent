@@ -6,6 +6,8 @@
   <SourceFiles>
     <File>C:/Users/User36/RiderProjects/Game/UlearnTestGame/FortuneTeller/Content/../../../../../Desktop/Гадалка upd/openbook.png</File>
     <File>C:/Users/User36/RiderProjects/Game/UlearnTestGame/FortuneTeller/Content/../../../../../Desktop/Гадалка upd/Комната/1920x1080/png/room.png</File>
+    <File>C:/Users/User36/RiderProjects/Game/UlearnTestGame/FortuneTeller/Content/10pentacles.png</File>
+    <File>C:/Users/User36/RiderProjects/Game/UlearnTestGame/FortuneTeller/Content/5cups.png</File>
     <File>C:/Users/User36/RiderProjects/Game/UlearnTestGame/FortuneTeller/Content/book.png</File>
     <File>C:/Users/User36/RiderProjects/Game/UlearnTestGame/FortuneTeller/Content/cardexample.png</File>
     <File>C:/Users/User36/RiderProjects/Game/UlearnTestGame/FortuneTeller/Content/cardsAnimation.png</File>
@@ -26,20 +28,33 @@
     <File>C:/Users/User36/RiderProjects/Game/UlearnTestGame/FortuneTeller/Content/exit.png</File>
     <File>C:/Users/User36/RiderProjects/Game/UlearnTestGame/FortuneTeller/Content/exitButton.png</File>
     <File>C:/Users/User36/RiderProjects/Game/UlearnTestGame/FortuneTeller/Content/File.spritefont</File>
+    <File>C:/Users/User36/RiderProjects/Game/UlearnTestGame/FortuneTeller/Content/fortune.png</File>
     <File>C:/Users/User36/RiderProjects/Game/UlearnTestGame/FortuneTeller/Content/happyEnd.png</File>
+    <File>C:/Users/User36/RiderProjects/Game/UlearnTestGame/FortuneTeller/Content/hermit.png</File>
+    <File>C:/Users/User36/RiderProjects/Game/UlearnTestGame/FortuneTeller/Content/knightofcups.png</File>
+    <File>C:/Users/User36/RiderProjects/Game/UlearnTestGame/FortuneTeller/Content/knightofswords.png</File>
     <File>C:/Users/User36/RiderProjects/Game/UlearnTestGame/FortuneTeller/Content/letter.png</File>
+    <File>C:/Users/User36/RiderProjects/Game/UlearnTestGame/FortuneTeller/Content/lovers.png</File>
+    <File>C:/Users/User36/RiderProjects/Game/UlearnTestGame/FortuneTeller/Content/magician.png</File>
     <File>C:/Users/User36/RiderProjects/Game/UlearnTestGame/FortuneTeller/Content/melody.mp3</File>
     <File>C:/Users/User36/RiderProjects/Game/UlearnTestGame/FortuneTeller/Content/menuback.png</File>
+    <File>C:/Users/User36/RiderProjects/Game/UlearnTestGame/FortuneTeller/Content/messageBoxFont.spritefont</File>
     <File>C:/Users/User36/RiderProjects/Game/UlearnTestGame/FortuneTeller/Content/openbook.png</File>
     <File>C:/Users/User36/RiderProjects/Game/UlearnTestGame/FortuneTeller/Content/openBookButton.png</File>
     <File>C:/Users/User36/RiderProjects/Game/UlearnTestGame/FortuneTeller/Content/owlleft.png</File>
     <File>C:/Users/User36/RiderProjects/Game/UlearnTestGame/FortuneTeller/Content/owlright.png</File>
     <File>C:/Users/User36/RiderProjects/Game/UlearnTestGame/FortuneTeller/Content/sadEnd.png</File>
+    <File>C:/Users/User36/RiderProjects/Game/UlearnTestGame/FortuneTeller/Content/star.png</File>
     <File>C:/Users/User36/RiderProjects/Game/UlearnTestGame/FortuneTeller/Content/start.png</File>
+    <File>C:/Users/User36/RiderProjects/Game/UlearnTestGame/FortuneTeller/Content/strength.png</File>
+    <File>C:/Users/User36/RiderProjects/Game/UlearnTestGame/FortuneTeller/Content/tower.png</File>
   </SourceFiles>
   <DestFiles>
     <File>openbook.png</File>
     <File>room.png</File>
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
@@ -68,7 +83,16 @@
     <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
     <File>happyEnd.png</File>
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
     <File xsi:nil="true" />
   </DestFiles>
 </SourceFileCollection>

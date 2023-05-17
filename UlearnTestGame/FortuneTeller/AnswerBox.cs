@@ -63,7 +63,7 @@ public class AnswerBox
             var texture = GenerateTexture(graphicsDevice, rect, Color.Black);
             var lineTexture = GenerateTexture(graphicsDevice, rect, Color.White);
             spriteBatch.Draw(texture, rect, Color.Black);
-            spriteBatch.Draw(lineTexture, new Rectangle(rect.X, rect.Y + rect.Height / 2, rect.Width, 2), Color.White);
+            spriteBatch.Draw(lineTexture, new Rectangle(rect.X, (int)(rect.Y + rect.Height / 1.97), rect.Width, 2), Color.White);
             float offsetY = rect.Y + 20;
             float offsetX = rect.X + 20;
 
@@ -83,10 +83,10 @@ public class AnswerBox
                 foreach (var line in wrappedText)
                 {
                     spriteBatch.DrawString(font, line, new Vector2(offsetX, offsetY), color);
-                    offsetY += font.MeasureString(line).Y + 10;
+                    offsetY += font.MeasureString(line).Y;
                 }
                 
-                offsetY += 30;
+                offsetY += 20;
             }
         }
     }
