@@ -17,7 +17,7 @@ public class Ending
 
     public void Update()
     {
-
+        
     }
 
     public void Draw(SpriteBatch spriteBatch, float scale, bool isSadEnd)

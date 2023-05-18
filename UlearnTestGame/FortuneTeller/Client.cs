@@ -57,7 +57,6 @@ public class Client
             cards2.DeactivateClick();
             openedBook.DeactivateClick();
         }
-        
         if (!dialogBox.IsVisible())
         {
             ActivateClick();
@@ -161,6 +160,7 @@ public class Client
             openedBook.ActivateClick();
             timer.Dispose();
         };
+        
         timer.Start();
     }
 }

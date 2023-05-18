@@ -4,12 +4,10 @@
   <Platform>Windows</Platform>
   <Config />
   <SourceFiles>
-    <File>C:/Users/User36/RiderProjects/Game/UlearnTestGame/FortuneTeller/Content/../../../../../Desktop/Гадалка upd/openbook.png</File>
     <File>C:/Users/User36/RiderProjects/Game/UlearnTestGame/FortuneTeller/Content/../../../../../Desktop/Гадалка upd/Комната/1920x1080/png/room.png</File>
     <File>C:/Users/User36/RiderProjects/Game/UlearnTestGame/FortuneTeller/Content/10pentacles.png</File>
     <File>C:/Users/User36/RiderProjects/Game/UlearnTestGame/FortuneTeller/Content/5cups.png</File>
     <File>C:/Users/User36/RiderProjects/Game/UlearnTestGame/FortuneTeller/Content/book.png</File>
-    <File>C:/Users/User36/RiderProjects/Game/UlearnTestGame/FortuneTeller/Content/cardexample.png</File>
     <File>C:/Users/User36/RiderProjects/Game/UlearnTestGame/FortuneTeller/Content/cardsAnimation.png</File>
     <File>C:/Users/User36/RiderProjects/Game/UlearnTestGame/FortuneTeller/Content/cardsDeck.png</File>
     <File>C:/Users/User36/RiderProjects/Game/UlearnTestGame/FortuneTeller/Content/client1.png</File>
@@ -50,9 +48,7 @@
     <File>C:/Users/User36/RiderProjects/Game/UlearnTestGame/FortuneTeller/Content/tower.png</File>
   </SourceFiles>
   <DestFiles>
-    <File>openbook.png</File>
     <File>room.png</File>
-    <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />

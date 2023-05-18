@@ -1,13 +1,7 @@
-﻿using System;
-using System.Drawing;
-using System.Threading.Tasks;
-using System.Timers;
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Media;
-using Color = Microsoft.Xna.Framework.Color;
-using Rectangle = Microsoft.Xna.Framework.Rectangle;
 
 namespace FortuneTeller;
 
@@ -85,7 +79,7 @@ public class Game1 : Game
         clients = new[]
         { 
             new Client(Content, graphics, GraphicsDevice, door, "client1", dialogFont,
-                "Я конечно не очень доверяю вашим картам...Но мне очень нравится одна девушка..." +
+                "Я конечно не очень доверяю таро...Но мне очень нравится одна девушка..." +
                 "Чувствует ли она ко мне то же, что и я к ней?", 
                 new[]
                 {
@@ -101,7 +95,7 @@ public class Game1 : Game
                     "Так и знал, что не стоит верить всем этим таро... Я признался ей, и оказалось, что наши чувства взаимны! " +
                     "     А вы что      говорили? А?" }, openedBook),
             new Client(Content, graphics, GraphicsDevice, door, "client2", dialogFont,
-            "Я всю жизнь мечтаю стать магом, но научиться так сложно...Может мне стоит стать как вы? :)", 
+            "Я всю жизнь мечтаю стать магом, но научиться так сложно...Может мне стоит научиться гадать как вы? :)", 
             new[]
             {
                 "Карты указывают на то, что ваш путь к освоению таро окажется полон неприятностей и сложностей, и лучше" +
@@ -112,7 +106,7 @@ public class Game1 : Game
             1, 
             cardsDeck, "magician", "fortune", 
             new[] { "Я начал изучать таро после вашего расклада. Вы были правы, у меня неплохо получается! " +
-                    "   Смотрите, как бы    я не увел у вас клиентов :)", 
+                    "   Смотрите, как бы    я не увел у вас клиентов, хех", 
                 "Наверное, вы специально так сказали! Боитесь, что уведу у вас клиентов? У меня уже очень хорошо " +
                 "получается гадать, ха-ха!" }, openedBook),
             new Client(Content, graphics, GraphicsDevice, door, "client3", dialogFont,
@@ -175,7 +169,7 @@ public class Game1 : Game
                 0, 
                 cardsDeck, "strength", "hermit", 
                 new[] { "Я осталась очень довольна трактовкой! Я стараюсь организовывать свое время, " +
-                        "и, кажется, жизнь начинает улучшаться.    Спасибочки!", 
+                        "и теперь     живу не в     свинарнике.    Спасибочки!", 
                     "Ожидала, что ваши советы мне помогут, но по итогу в моей жизни ничего не изменилось. " +
                     "Зря потраченные     деньги!" }, openedBook),
             new Client(Content, graphics, GraphicsDevice, door, "client7", dialogFont,
@@ -200,15 +194,9 @@ public class Game1 : Game
         if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed ||
             Keyboard.GetState().IsKeyDown(Keys.Escape))
             Exit();
+        
         owl.Update(gameTime);
         menu.Update(graphics);
-
-        if (isExitButtonVisible && Mouse.GetState().LeftButton == ButtonState.Pressed && 
-            exitButtonRect.Contains(Mouse.GetState().Position))
-        {
-            Exit();
-        }
-        
         openedBook.Update();
         dialogBox.Update();
         
@@ -222,7 +210,13 @@ public class Game1 : Game
             }
         }
         
-        ending.Update();
+        if (isExitButtonVisible && Mouse.GetState().LeftButton == ButtonState.Pressed && 
+            exitButtonRect.Contains(Mouse.GetState().Position))
+        {
+            Exit();
+        }
+        
+        ending.Update(); 
         base.Update(gameTime);
     }
 
