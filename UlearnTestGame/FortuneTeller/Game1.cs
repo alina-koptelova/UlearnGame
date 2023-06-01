@@ -58,7 +58,7 @@ public class Game1 : Game
         dialogFont = Content.Load<SpriteFont>("dialogbox");
         background = Content.Load<Texture2D>("room");
         MediaPlayer.Play(song);
-        MediaPlayer.Volume = 0.05f;
+        MediaPlayer.Volume = 1f;
         MediaPlayer.IsRepeating = true;
         owl = new Owl(Content);
         door = Content.Load<Texture2D>("door");
@@ -199,7 +199,6 @@ public class Game1 : Game
         menu.Update(graphics);
         openedBook.Update();
         dialogBox.Update();
-        
         clients[0].Update(gameTime);
         
         for (var i = 1; i < clients.Length; i++)
@@ -292,6 +291,4 @@ public class Game1 : Game
         spriteBatch.End();
         base.Draw(gameTime);
     }
-    
-    
 }
