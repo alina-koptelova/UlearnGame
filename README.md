@@ -4,4 +4,4 @@
 Твои клиенты - люди, жаждущие узнать ответы на свои вопросы или получить совет.
 Зарабатывай баллы, отвечая на вопросы верно, и повышай свой рейтинг. 
 Но помни, от рейтинга зависит и твоя судьба...
-![preview](https://github.com/alina-koptelova/UlearnGame/assets/72514455/6a7c38d4-4931-48a8-abc3-7af569ada9da)
+![gamepreview](https://github.com/alina-koptelova/UlearnGame/assets/72514455/61e4fd75-e6de-481b-bb7b-729c1434b447)
