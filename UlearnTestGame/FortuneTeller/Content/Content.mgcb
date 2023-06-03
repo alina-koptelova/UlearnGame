@@ -13,18 +13,6 @@
 
 #---------------------------------- Content ---------------------------------#
 
-#begin ../../../../../Desktop/Гадалка upd/Комната/1920x1080/png/room.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
-/build:../../../../../Desktop/Гадалка upd/Комната/1920x1080/png/room.png;room.png
-
 #begin 10pentacles.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -289,7 +277,7 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:happyEnd.png;sadEnd.png
+/build:happyEnd.png
 
 #begin hermit.png
 /importer:TextureImporter
@@ -400,18 +388,6 @@
 /processorParam:TextureFormat=Color
 /build:openbook.png
 
-#begin openbook.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
-/build:openbook.png
-
 #begin openBookButton.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -423,6 +399,18 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:openBookButton.png
+
+#begin owl.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:owl.png
 
 #begin owlleft.png
 /importer:TextureImporter
@@ -448,6 +436,18 @@
 /processorParam:TextureFormat=Color
 /build:owlright.png
 
+#begin room.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:room.png
+
 #begin sadEnd.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -458,7 +458,7 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:sadEnd.png;happyEnd.png
+/build:sadEnd.png
 
 #begin star.png
 /importer:TextureImporter

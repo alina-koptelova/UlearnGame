@@ -58,7 +58,7 @@ public class Game1 : Game
         dialogFont = Content.Load<SpriteFont>("dialogbox");
         background = Content.Load<Texture2D>("room");
         MediaPlayer.Play(song);
-        MediaPlayer.Volume = 1f;
+        MediaPlayer.Volume = 0.05f;
         MediaPlayer.IsRepeating = true;
         owl = new Owl(Content);
         door = Content.Load<Texture2D>("door");

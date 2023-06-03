@@ -22,7 +22,7 @@ public class Ending
 
     public void Draw(SpriteBatch spriteBatch, float scale, bool isSadEnd)
     {
-        spriteBatch.Draw(isSadEnd ? happyEnd : sadEnd, Vector2.Zero, null, Color.White,
+        spriteBatch.Draw(isSadEnd ? sadEnd : happyEnd, Vector2.Zero, null, Color.White,
             0f, Vector2.Zero, scale, SpriteEffects.None, 0f);
     }
 }
